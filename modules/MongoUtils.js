@@ -25,12 +25,15 @@ function MongoUtils() {
 
   mu.users = {};
 
-  mu.users.registerUser = (data) => {};
-
   mu.users.insert = (userData) => {
     return mu.connect().then((client) => {
       const usuarios = client.db(DB_NAME).collection("users");
-      return usuarios.insertOne(userData).finally(() => client.close());
+      const query = {username : userData.username};
+      return usuarios.findOne(query)
+        .then( user => {
+          if(!user) return usuarios.insertOne(userData);
+          console.log("Usuario existente");
+        }).finally(() => client.close());
     });
   };
 

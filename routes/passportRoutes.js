@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require("passport");
 const crypto = require("crypto");
 const mongo = require("../modules/MongoUtils");
-const passwordValidator = require('password-validator');
+const passwordValidator = require("password-validator");
 const emailValdator = require("email-validator");
 
 router.get("/login", function (req, res) {
@@ -20,7 +20,6 @@ router.post(
   }
 );
 
-
 router.get("/logout", function (req, res) {
   res.clearCookie("connect.sid");
   res.redirect("/");
@@ -31,32 +30,32 @@ router.get("/profile", function (req, res) {
 });
 
 router.post("/register", (req, res) => {
-  console.log("Req del POST",req.body);
-
-  const saltHash = genPassword(req.body.passwordRegister);
-  
-  const salt = saltHash.salt,
-    hash = saltHash.hash,
-    correo = req.body.emailRegister,
-    name = req.body.nameRegister,
-    phone = req.body.phoneRegister;
-  const newUser = {
-    username: req.body.usernameRegister,
-    hash: hash,
-    salt: salt,
-    email: correo,
-    name: name,
-    phone 
-  };
-  mongo.users.insert(newUser)
-    .finally(() => {
-      res.redirect("/login");
+  console.log("Req del POST", req.body);
+  if (req.body.passwordRegister !== req.body.password2Register) {
+    console.log("passwords are not equals");
+    res.redirect("/");
+  } else {
+    const saltHash = genPassword(req.body.passwordRegister);
+    const salt = saltHash.salt,
+      hash = saltHash.hash,
+      correo = req.body.emailRegister,
+      name = req.body.nameRegister,
+      phone = req.body.phoneRegister;
+    const newUser = {
+      username: req.body.usernameRegister,
+      hash: hash,
+      salt: salt,
+      email: correo,
+      name: name,
+      phone,
+    };
+    mongo.users.insert(newUser).finally(() => {
+      res.redirect("/user");
     });
+  }
 });
 
-
 module.exports = router;
-
 
 // Password generator for registered users
 function genPassword(password) {
@@ -73,6 +72,8 @@ function genPassword(password) {
 
 // Development purposes
 router.get("/user", (req, res) => {
-  console.log("User info",req.user);
-  res.send("<h1>Welcome back! "+req.user.username+"</h1>");
+  console.log("User info", req.user);
+  const user = req.user;
+  if (user) res.send("<h1>Welcome back! " + req.user.username + "</h1>");
+  else res.send("<h1>Welcome</h1>");
 });

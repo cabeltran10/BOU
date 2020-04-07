@@ -1,21 +1,30 @@
 const passport = require("passport");
 const Strategy = require("passport-local").Strategy;
+const mongo = require("./MongoUtils");
+const crypto = require("crypto");
 require("dotenv").config();
 
 passport.use(
   new Strategy((username, password, cb) => {
-    console.log(username, password);
-    // db.users.findByUsername(username, function(err, user) {
-    //   if (err) { return cb(err); }
-    //   if (!user) { return cb(null, false); }
-    //   if (user.password != password) { return cb(null, false); }
-    return cb(null, true);
-    // });
+    mongo.passport.findUser(username, function (err, user) {
+      if (err) {
+        return cb(err);
+      }
+      if (!user) {
+        return cb(null, false);
+      }
+      const isValid = validPassword(password, user.hash, user.salt);
+      if (!isValid) {
+        return cb(null, false);
+      }
+      return cb(null, user);
+    });
   })
 );
 
 passport.serializeUser(function (user, cb) {
-  cb(null, user.id);
+  console.log(console.log(user._id));
+  cb(null, user._id);
 });
 
 passport.deserializeUser(function (id, cb) {
@@ -30,7 +39,7 @@ passport.deserializeUser(function (id, cb) {
 const configurePassport = (app) => {
   app.use(require("body-parser").urlencoded({ extended: true }));
   app.use(
-      require("express-session")({
+    require("express-session")({
       secret: process.env.SECRET || "yUQz+:ZS-5pK=,7bcR!%r&P)UW[Xv=",
       resave: false,
       saveUninitialized: false,

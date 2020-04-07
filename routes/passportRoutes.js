@@ -7,7 +7,7 @@ const passwordValidator = require('password-validator');
 const emailValdator = require("email-validator");
 
 router.get("/login", function (req, res) {
-  res.send("<h1>Hello world</h1>");
+  res.send("<h1>Incorrect Password</h1>");
 });
 
 router.post(
@@ -20,7 +20,7 @@ router.post(
 );
 
 router.get("/logout", function (req, res) {
-  req.logout();
+  res.clearCookie("connect.sid");
   res.redirect("/");
 });
 

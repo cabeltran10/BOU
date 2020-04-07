@@ -14,28 +14,31 @@ function Navbar(props) {
           class="navbar-toggler"
           type="button"
           data-toggle="collapse"
-          data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">
-              Home <span class="sr-only">(current)</span>
-            </a>
-            <a class="nav-item nav-link" href="#">
-              Features
-            </a>
-            <a class="nav-item nav-link" href="#">
-              Pricing
-            </a>
-            <a class="nav-item nav-link disabled" href="#">
-              Disabled
-            </a>
-          </div>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">
+                Home <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Features
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login.html">
+                Iniciar Sesion
+              </a>
+            </li>
+          </ul>
         </div>
       </nav>
     </div>

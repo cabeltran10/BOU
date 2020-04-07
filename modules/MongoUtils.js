@@ -1,4 +1,6 @@
 const mongodb = require("mongodb");
+require("dotenv").config();
+
 const MongoClient = mongodb.MongoClient;
 function MongoUtils() {
   const mu = {};
@@ -16,56 +18,30 @@ function MongoUtils() {
   // To search _id
   mu.ObjectId = ObjectId;
 
-  // To get first 20 records from a collection
-  mu.findAll = (collection) => {
-    const client = new MongoClient(url, { useUnifiedTopology: true }); // useUnifiedTopology removes a warning
-    return client.connect().then(client => {
-      return client
-        .db(DB_NAME)
-        .collection(collection)
-        .find({})
-        .limit(20)
-        .toArray()
-        .finally(() => client.close()); // Returns a promise that will resolve to the list of databases
-    });
+  // Connect to the DB
+  mu.connect = () => {
+    const options = { useUnifiedTopology: true, useNewUrlParser: true };
+    const client = new MongoClient(url, options);
+    return client.connect();
   };
 
-  // Insert a new document in a collection
-  mu.insert = (dbName, collection, query) => {
-    const client = new MongoClient(url, { useUnifiedTopology: true }); // useUnifiedTopology removes a warning
-    return client.connect().then(client => {
-      return client
-        .db(dbName)
-        .collection(collection)
-        .insertOne(query)
-        .finally(() => client.close());
-    });
+  mu.passport = {};
+
+  mu.passport.registerUser = (data) => {
+
+  }
+
+  mu.passport.insert = (userData) => {
+    return mu.connect()
+      .then(client => {
+        console.log("Connecting to", DB_NAME);
+        console.log("Collection users");
+        const usuarios = client.db(DB_NAME).collection("users");
+        return usuarios.insertOne(userData).finally(() => client.close());
+      });
   };
 
-  // Delete a new record in a collection
-  mu.delete = (dbName, collection, query) => {
-    const client = new MongoClient(url, { useUnifiedTopology: true }); // useUnifiedTopology removes a warning
 
-    return client.connect().then(client => {
-      return client
-        .db(dbName)
-        .collection(collection)
-        .deleteOne(query)
-        .finally(() => client.close());
-    });
-  };
-
-  // Update a new record from a collection
-  mu.update = (dbName, collection, query, update) => {
-    const client = new MongoClient(url, { useUnifiedTopology: true }); // useUnifiedTopology removes a warning
-    return client.connect().then(client => {
-      return client
-        .db(dbName)
-        .collection(collection)
-        .updateOne(query, update)
-        .finally(() => client.close());
-    });
-  };
   return mu;
 }
 

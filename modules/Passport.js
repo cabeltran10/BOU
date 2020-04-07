@@ -6,7 +6,7 @@ require("dotenv").config();
 
 passport.use(
   new Strategy((username, password, cb) => {
-    mongo.passport.findUser(username, function (err, user) {
+    mongo.users.findByUsername(username, function (err, user) {
       if (err) {
         return cb(err);
       }
@@ -23,12 +23,12 @@ passport.use(
 );
 
 passport.serializeUser(function (user, cb) {
-  console.log(console.log(user._id));
+  console.log("Serializando el usuario");
   cb(null, user._id);
 });
 
 passport.deserializeUser(function (id, cb) {
-  db.users.findById(id, function (err, user) {
+  mongo.users.findById(id, function (err, user) {
     if (err) {
       return cb(err);
     }

@@ -14,10 +14,12 @@ router.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/login" }),
   function (req, res) {
-    console.log("post");
-    res.redirect("/");
+    console.log("Loggeado");
+    // res.redirect("/");
+    res.redirect("/user"); //Development purposes
   }
 );
+
 
 router.get("/logout", function (req, res) {
   res.clearCookie("connect.sid");
@@ -46,7 +48,7 @@ router.post("/register", (req, res) => {
     name: name,
     phone 
   };
-  mongo.passport.insert(newUser)
+  mongo.users.insert(newUser)
     .finally(() => {
       res.redirect("/login");
     });
@@ -68,3 +70,9 @@ function genPassword(password) {
     hash: genHash,
   };
 }
+
+// Development purposes
+router.get("/user", (req, res) => {
+  console.log("User info",req.user);
+  res.send("<h1>Welcome back! "+req.user.username+"</h1>");
+});

@@ -15,9 +15,6 @@ function MongoUtils() {
     if (paramUrl !== "") url = paramUrl;
   };
 
-  // To search _id
-  mu.ObjectId = ObjectId;
-
   // Connect to the DB
   mu.connect = () => {
     console.log("Connecting to", DB_NAME);
@@ -26,30 +23,40 @@ function MongoUtils() {
     return client.connect();
   };
 
-  mu.passport = {};
+  mu.users = {};
 
-  mu.passport.registerUser = (data) => {};
+  mu.users.registerUser = (data) => {};
 
-  mu.passport.insert = (userData) => {
+  mu.users.insert = (userData) => {
     return mu.connect().then((client) => {
-      console.log("Collection users");
       const usuarios = client.db(DB_NAME).collection("users");
-      // mu.passport
       return usuarios.insertOne(userData).finally(() => client.close());
     });
   };
 
-  mu.passport.findUser = (username, cb) => {
+  mu.users.findByUsername = (username, cb) => {
     return mu.connect().then((client) => {
-      console.log("Collection users");
       const users = client.db(DB_NAME).collection("users");
-      const query={ username };
-      console.log(query)
-      return users.findOne(query)
-          .then((user, err) => {
-            cb(err, user);
-          })
-          .finally(() => client.close());
+      const query = { username };
+      return users
+        .findOne(query)
+        .then((user, err) => {
+          cb(err, user);
+        })
+        .finally(() => client.close());
+    });
+  };
+
+  mu.users.findById = (_id, cb) => {
+    return mu.connect().then((client) => {
+      const users = client.db(DB_NAME).collection("users");
+      const query = { _id: ObjectId(_id) };
+      return users
+        .findOne(query)
+        .then((user, err) => {
+          cb(err, user);
+        })
+        .finally(() => client.close());
     });
   };
 

@@ -7,7 +7,7 @@ const passwordValidator = require("password-validator");
 const emailValdator = require("email-validator");
 
 router.get("/login", function (req, res) {
-  res.send("<h1>Incorrect Password</h1>");
+  console.log("hizo gettt");
 });
 
 router.post(
@@ -15,15 +15,21 @@ router.post(
   passport.authenticate("local", { failureRedirect: "/login" }),
   function (req, res) {
     console.log("Loggeado");
-    // res.redirect("/");
-    res.redirect("/user"); //Development purposes
+    res.redirect("/");
   }
 );
 
+router.get("/getUser", function (req, res) {
+  console.log(req.user);
+  res.json(req.user || null);
+});
+
 router.get("/logout", function (req, res) {
-  res.clearCookie("connect.sid");
+  req.logout();
   res.redirect("/");
 });
+
+
 
 router.get("/profile", function (req, res) {
   res.render("profile", { user: req.user });

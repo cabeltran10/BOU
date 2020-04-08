@@ -6,6 +6,7 @@ require("dotenv").config();
 
 passport.use(
   new Strategy((username, password, cb) => {
+    console.log("Ping entra",username, password);
     mongo.users.findByUsername(username, function (err, user) {
       if (err) {
         return cb(err);
@@ -17,13 +18,13 @@ passport.use(
       if (!isValid) {
         return cb(null, false);
       }
+      console.log("Everything ok",username, password);
       return cb(null, user);
     });
   })
 );
 
 passport.serializeUser(function (user, cb) {
-  console.log("Serializando el usuario");
   cb(null, user._id);
 });
 
@@ -43,7 +44,7 @@ const configurePassport = (app) => {
       secret: process.env.SECRET || "yUQz+:ZS-5pK=,7bcR!%r&P)UW[Xv=",
       resave: false,
       saveUninitialized: false,
-      cookie: { expires: new Date(Date.now() + 900000) },
+      // cookie: { expires: new Date(Date.now() + 900000) },
     })
   );
 

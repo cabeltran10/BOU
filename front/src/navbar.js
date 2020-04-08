@@ -1,43 +1,37 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, {useEffect} from "react";
+import { Link } from "react-router-dom";
+// import PropTypes from "prop-types";
 
-Navbar.propTypes = {};
+// Navbar.propTypes = {};
 
 function Navbar(props) {
+  
+  
+  useEffect(() => {
+    fetch("/getUser")
+      .then((res) => res.json())
+      .then((user) => props.setUser(user));
+  }, []);
+
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          Navbar
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">
-                Home <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Features
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login.html">
-                Iniciar Sesion
-              </a>
-            </li>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav m-2">
+            <Link to="/">
+              <li className="nav-item">Home</li>
+            </Link>
+            {!props.user? 
+            <Link to="/login">
+              <li className="nav-item">Iniciar Sesion</li>
+            </Link> : <li className="nav-item">{props.user.username}</li>}
+            
+            <Link to="logout">
+              <li className="nav-item">Cerrar Sesion</li>
+            </Link>
+            <Link>
+              <li className="nav-item">Registrarse</li>
+            </Link>
           </ul>
         </div>
       </nav>

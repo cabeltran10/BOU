@@ -1,14 +1,9 @@
-import React, {useEffect}from "react";
+import React from "react";
 // import PropTypes from "prop-types";
 
 // FormLogin.propTypes = {};
 
 function FormLogin(props) {
-
-  const fetching = async (e) => {
-    fetch("/login", { method: "POST" });
-  };
-
   return (
     <div>
       <form method="POST" action="/login">

@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'front/build'))); //deberia dejar esta
-app.use(express.static(path.join(__dirname, "front/public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 configurePassport(app);
 

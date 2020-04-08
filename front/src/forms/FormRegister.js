@@ -3,7 +3,6 @@ import React from "react";
 function FormRegister(props) {
 
   const fetching = async (e) =>{
-    e.preventDefault();
     fetch("/register");
   }
 
@@ -12,27 +11,27 @@ function FormRegister(props) {
       <h1>Register</h1>
       <form method="POST" onSubmit={fetching}>
         <div className="form-group">
-          <label htmlFor="username_register">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             className="form-control"
             type="text"
-            name="usernameRegister"
+            name="username"
             id="usernameRegister"
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password_register">Password</label>
+          <label htmlFor="password">Password</label>
           <input
             type="password"
-            name="passwordRegister"
+            name="password"
             id="passwordRegister"
             className="form-control"
             required
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password2_register">Repeat Password</label>
+          <label htmlFor="password2Register">Repeat Password</label>
           <input
             type="password"
             name="password2Register"
@@ -42,7 +41,7 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="name">Nombre Completo</label>
+          <label htmlFor="nameRegister">Nombre Completo</label>
           <input
             type="text"
             name="nameRegister"

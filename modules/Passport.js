@@ -6,19 +6,21 @@ require("dotenv").config();
 
 passport.use(
   new Strategy((username, password, cb) => {
-    console.log("Ping entra",username, password);
+    console.log("Buscando usuario");
     mongo.users.findByUsername(username, function (err, user) {
       if (err) {
         return cb(err);
       }
       if (!user) {
+        console.log("no econtro al usuario");
         return cb(null, false);
       }
       const isValid = validPassword(password, user.hash, user.salt);
       if (!isValid) {
+        console.log("contraseña no es");
         return cb(null, false);
       }
-      console.log("Everything ok",username, password);
+      console.log("User found");
       return cb(null, user);
     });
   })

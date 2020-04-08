@@ -31,7 +31,6 @@ function MongoUtils() {
       return usuarios.findOne(query)
         .then( user => {
           if(!user) return usuarios.insertOne(userData);
-          console.log("Usuario existente");
         }).finally(() => client.close());
     });
   };

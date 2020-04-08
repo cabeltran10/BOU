@@ -6,10 +6,6 @@ import React, {useEffect} from "react";
 function Home(props) {
 
 
-  useEffect( () => {
-    // fetch();
-  });
-  
   return (
     <div>{!props.user? "User not logged" : `Welcome Back!${props.user.username}`}</div>
   );

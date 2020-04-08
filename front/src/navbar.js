@@ -1,17 +1,7 @@
 import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
-// import PropTypes from "prop-types";
-
-// Navbar.propTypes = {};
 
 function Navbar(props) {
-  
-  
-  useEffect(() => {
-    fetch("/getUser")
-      .then((res) => res.json())
-      .then((user) => props.setUser(user));
-  }, []);
 
   return (
     <div>
@@ -26,10 +16,10 @@ function Navbar(props) {
               <li className="nav-item">Iniciar Sesion</li>
             </Link> : <li className="nav-item">{props.user.username}</li>}
             
-            <Link to="logout">
+            <Link to="/logout">
               <li className="nav-item">Cerrar Sesion</li>
             </Link>
-            <Link>
+            <Link to="/register">
               <li className="nav-item">Registrarse</li>
             </Link>
           </ul>

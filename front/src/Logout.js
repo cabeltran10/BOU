@@ -1,23 +1,18 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from "react";
 // import PropTypes from 'prop-types';
 
 // Logout.propTypes = {
-  
+
 // };
 
 function Logout(props) {
-  useEffect( () => {
-    fetchLogout();
-  });
+  fetch("/logout");
+  console.log(props);
 
-  const fetchLogout = () => {
-    fetch("/logout");
-  }
-  return (
-    <div>
-      Thank you for visiting us!
-    </div>
-  );
+  useEffect(() => {
+    props.setUser(null);
+  });
+  return <div>Thank you for visiting us!</div>;
 }
 
 export default Logout;

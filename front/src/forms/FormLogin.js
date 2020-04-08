@@ -1,10 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useEffect}from "react";
 // import PropTypes from "prop-types";
 
 // FormLogin.propTypes = {};
 
 function FormLogin(props) {
+
+  const fetching = async (e) => {
+    fetch("/login", { method: "POST" });
+  };
+
   return (
     <div>
       <form method="POST" action="/login">
@@ -26,9 +30,7 @@ function FormLogin(props) {
             className="form-control"
           />
         </div>
-        {/* <Link to="/"> */}
         <button type="submit">Submit</button>
-        {/* </Link> */}
       </form>
     </div>
   );

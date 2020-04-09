@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Navbar from "./navbar";
-import ListStore from "./ListStore";
 import './index.css';
 
 

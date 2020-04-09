@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera.git",
+    "react-native-qrcode-scanner": "^1.4.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.1"
   },

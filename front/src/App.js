@@ -6,6 +6,7 @@ import Logout from "./Logout";
 import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ListStore from "./ListStore";
+import ShoppingCart from "./ShoppingCart";
 import './index.css';
 
 const shops = [
@@ -28,6 +29,27 @@ const shops = [
  }
 ];
 
+const products = [
+  {
+    "id": "91823",
+    "name": "Karen Isgrigg",
+    "price": "400",
+    "imageURL": "http://localhost:5001/karen.jpg"
+  },
+  {
+    "id": "238470",
+    "name": "Richard Kalehoff",
+    "price": "400",
+    "imageURL": "http://localhost:5001/richard.jpg"
+  },
+  {
+    "id": "2037492",
+    "name": "Vestido negro",
+    "price": "400",
+    "imageURL": "http://localhost:5001/tyler.jpg"
+  }
+ ];
+
 function App(props) {
   const [user, setUser] = useState(null);
 
@@ -42,6 +64,8 @@ function App(props) {
       <div>
         <Navbar setUser={setUser} user={user}></Navbar>
         <ListStore shops= {shops} />
+        <ShoppingCart products={products} />
+
         <Switch>
           <Route path="/" exact component={() => <Home user={user} />} />
           <Route

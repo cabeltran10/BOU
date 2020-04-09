@@ -3,7 +3,7 @@ const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send(index);
+  res.send("<h1>INDEX</h1>");
 });
 
 

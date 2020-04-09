@@ -17,45 +17,42 @@ function Navbar(props) {
           to="/"
           className="navbar-brand"
           href="/"
-          style={{ backgroundImage: "url(" + logo + ")"}}
+          style={{ backgroundImage: "url(" + logo + ")" }}
         ></Link>
         <div className="navbar-nav">
-            <a className="nav-item">
-              <img src={cart} width="40" height="40" />
-            </a>
+          <a className="nav-item">
+            <img src={cart} width="40" height="40" />
+          </a>
 
-            {!props.user ? (
-              <Link to="/login">
-                <img src={user} width="40" height="40" />
-              </Link>
-            ) : (
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                {props.user.username}
-              </a>
-            )}
-            <div
-              className="dropdown-menu"
-              aria-labelledby="navbarDropdownMenuLink"
+          {!props.user ? (
+            <Link to="/login">
+              <img src={user} width="40" height="40" />
+            </Link>
+          ) : (
+            <a
+              className="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdownMenuLink"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-              <Link
-                className="dropdown-item"
-                to="/logout"
-                style={{ backgroundImage: "url(" + logout + ")" }}
-              >
-                Cerrar Sesion
-              </Link>
-              <Link className="dropdown-item" to="/register">
-                Registrarse
-              </Link>
-            </div>
+              {props.user.username}
+            </a>
+          )}
+          <div
+            className="dropdown-menu"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <Link className="dropdown-item" to="/logout">
+              <img src={logout} width="20" height="20" />
+            </Link>
+
+            <Link className="dropdown-item" to="/register">
+              Registrarse
+            </Link>
+          </div>
         </div>
       </nav>
     </div>

@@ -22,13 +22,22 @@ div.navbar-nav {
   flex-direction: row;
 }
 
+.shop-list-item{
+  width: 20rem;
+}
+
+.shop-list-item img{
+  width: 15rem;
+  justify-content: flex-start;
+}
+
 .navbar {
   background-color: #3fbfa8;
 }
 
 .navbar-brand {
   color: white;
-  padding: 10px 50px 50px;
+  padding: 2rem 2rem 2rem 2rem;
 }
 
 .navbar-nav {
@@ -56,6 +65,11 @@ div.navbar-nav {
   font-size: 11px;
   line-height: 32px;
   text-transform: uppercase;
+}
+
+.shop-list-item shop-go{
+  float:right;
+  justify-content: flex-end;
 }
 
 .item-remove {

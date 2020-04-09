@@ -11,7 +11,7 @@ const shops = [
   {
     id: "187623",
     name: "Nike",
-    imageURL: "https://images.app.goo.gl/YX7fYfogdzPQcLjSA",
+    imageURL: "https://unsplash.com/photos/IHpUgFDn7zU",
   },
   {
     id: "12334",
@@ -57,12 +57,25 @@ const item = {
 };
 
 function Home(props) {
+
+     let removeItem = (item) =>
+    {
+        this.setState((currentState) =>
+         {
+          products:currentState.items.filter((c) =>{
+            return c.id!== item.id
+          })
+         } )
+    }
+
   return (
     <div>
+     <div className="container">
       {!props.user ? "User not logged" : `Welcome Back!${props.user.username}`}
       <ListStore shops={shops} />
-      <ShoppingCart products={products} />
+      <ShoppingCart products={products} removeItem={removeItem} />
       <AddToCart item={item} />
+    </div>
     </div>
   );
 }

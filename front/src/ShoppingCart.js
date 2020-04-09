@@ -2,16 +2,21 @@
 import React, {Component, useState} from 'react';
 
 
-
 function ShoppingCart(props){
 
 const [total, setTotal]=React.useState(0);
-const [quantity, setQuantity]=React.useState(0);
+const [quantity, setQuantity]=React.useState(1);
 
+let onClickTotal =(item)=>
+{
+ setTotal(total+item.price*quantity);
+ setQuantity(quantity+1)
 
+}
+    
     
     return ( 
-    	
+	
       <div>
 
         <ul className='product-list'>
@@ -29,14 +34,14 @@ const [quantity, setQuantity]=React.useState(0);
      
             </div>
 
-           <button onClick={( )=> setQuantity(quantity+1)} className='item-add'>
+           <button onClick={ ( )=> onClickTotal(item) }  className='item-add'>
             +
             </button>
             <span>{quantity}</span>
 
 
             
-            <button onClick={( )=>this.props.OnRemoveItem(item)} className='item-remove'>
+            <button onClick={( )=> props.removeItem(item)} className='item-remove'>
             Remove
             </button>
 

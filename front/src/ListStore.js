@@ -9,14 +9,16 @@ render()
   return (
     <div>
 
-  <ol className='shop-list'>
+  <ul className='shop-list'>
 
   { this.props.shops.map(shop => (
 
 
-    <li key={shop.id} className='shop-list-item'>
-    <div className='shop-avatar' style={ {backgroundImage: `url(${shop.imageURL})`}}>
-    </div>
+    <li key={shop.id} className='card shop-list-item'>
+
+    <img className='card-img-top shop-avatar' src={shop.imageURL}>
+    </img>
+
 
     <div className='shop-details'>
     <p>{shop.name}</p>
@@ -29,7 +31,7 @@ render()
      </li>
     ))}
 
-  </ol>
+  </ul>
 
     </div>
   );

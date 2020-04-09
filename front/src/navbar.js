@@ -19,7 +19,7 @@ function Navbar(props) {
           href="/"
           style={{ backgroundImage: "url(" + logo + ")"}}
         ></Link>
-        <div className="navbar-nav">
+        <div className="navbar-nav ml-auto">
             <a className="nav-item">
               <img src={cart} width="40" height="40" />
             </a>

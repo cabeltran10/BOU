@@ -1,17 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import logo from './bou.svg';
+import user from './user.svg';
+import cart from './cart.svg';
 
 Navbar.propTypes = {};
 
 function Navbar(props) {
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-          Navbar
+      <nav className="navbar navbar-expand-lg">
+        <a className="navbar-brand" href="#" >
+          B O U
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-toggle="collapse"
           data-target="#navbarNavDropdown"
@@ -19,23 +22,18 @@ function Navbar(props) {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">
-                Home <span class="sr-only">(current)</span>
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav">
+
+            <li className="nav-item" style={{backgroundImage: 'url('+cart+')'}}>
+              <a className="nav-link" href="#" >
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Features
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login.html">
-                Iniciar Sesion
+            <li className="nav-item" >
+              <a className="nav-link" href="/login.html" style={{backgroundImage: 'url('+user+')'}}>
+                
               </a>
             </li>
           </ul>

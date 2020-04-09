@@ -32,7 +32,7 @@ function Navbar(props) {
 
           {!props.user ? (
             <Link to="/login">
-              <li className="nav-item"  style={{backgroundImage: 'url('+user+')'}}></li>
+              <li className="nav-item"><img src={user}/></li>
             </Link>
           ) : (
             <li className="nav-item">{props.user.username}</li>

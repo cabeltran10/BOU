@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./Navbar.js";
+import Navbar from "./navbar.js";
 import FormLogin from "./forms/FormLogin";
 import FormRegister from "./forms/FormRegister";
 import Logout from "./Logout";

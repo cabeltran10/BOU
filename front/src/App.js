@@ -7,7 +7,8 @@ import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ListStore from "./ListStore";
 import ShoppingCart from "./ShoppingCart";
-import Scan from "./Scan";
+
+import AddToCart from "./AddToCart";
 import './index.css';
 
 const shops = [
@@ -51,6 +52,14 @@ const products = [
   }
  ];
 
+ const item={
+    "id": "91823",
+    "name": "Karen Isgrigg",
+    "price": "400",
+    "imageURL": "http://localhost:5001/karen.jpg",
+    "description":"Ropitalindanuevapahueler"
+  };
+
 function App(props) {
   const [user, setUser] = useState(null);
 
@@ -64,9 +73,10 @@ function App(props) {
     <Router>
       <div>
         <Navbar setUser={setUser} user={user}></Navbar>
+
         <ListStore shops= {shops} />
         <ShoppingCart products={products} />
-          
+          <AddToCart item={item}/>
         <Switch>
           <Route path="/" exact component={() => <Home user={user} />} />
           <Route
@@ -82,6 +92,7 @@ function App(props) {
             component={() => <Logout user={user} setUser={setUser} />}
           />
         </Switch>
+
       </div>
     </Router>
   );

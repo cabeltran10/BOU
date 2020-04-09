@@ -3,41 +3,49 @@ import PropTypes from "prop-types";
 import logo from './bou.svg';
 import user from './user.svg';
 import cart from './cart.svg';
+import { Link } from "react-router-dom";
 
 Navbar.propTypes = {};
+
+
+
 
 function Navbar(props) {
   return (
     <div>
+  
+
       <nav className="navbar navbar-expand-lg">
         <a className="navbar-brand" href="#" >
           B O U
         </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
+
+        <ul className="navbar-nav m-2">
+          <Link to="/">
+            <li className="nav-item">Home</li>
+          </Link>
 
             <li className="nav-item" style={{backgroundImage: 'url('+cart+')'}}>
               <a className="nav-link" href="#" >
               </a>
             </li>
-            <li className="nav-item" >
-              <a className="nav-link" href="/login.html" style={{backgroundImage: 'url('+user+')'}}>
-                
-              </a>
-            </li>
-          </ul>
-        </div>
+
+          {!props.user ? (
+            <Link to="/login">
+              <li className="nav-item"  style={{backgroundImage: 'url('+user+')'}}></li>
+            </Link>
+          ) : (
+            <li className="nav-item">{props.user.username}</li>
+          )}
+
+          <Link to="/logout">
+            <li className="nav-item">Cerrar Sesion</li>
+          </Link>
+          <Link to="/register">
+            <li className="nav-item">Registrarse</li>
+          </Link>
+        </ul>
+
       </nav>
     </div>
   );

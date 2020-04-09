@@ -3,25 +3,27 @@ const router = express.Router();
 const passport = require("passport");
 const crypto = require("crypto");
 const mongo = require("../modules/MongoUtils");
-const passwordValidator = require("password-validator");
-const emailValdator = require("email-validator");
 
 router.get("/login", function (req, res) {
-  res.send("<h1>Incorrect Password</h1>");
+  console.log("hizo gettt");
+  res.redirect("/");
 });
 
 router.post(
-  "/login",
-  passport.authenticate("local", { failureRedirect: "/login" }),
+  "/login", passport.authenticate("local", { failureRedirect: "/login" }),
   function (req, res) {
     console.log("Loggeado");
-    // res.redirect("/");
-    res.redirect("/user"); //Development purposes
+    res.redirect("/");
   }
 );
 
+router.get("/getUser", function (req, res) {
+  console.log(req.user);
+  res.json(req.user || null);
+});
+
 router.get("/logout", function (req, res) {
-  res.clearCookie("connect.sid");
+  req.logout();
   res.redirect("/");
 });
 
@@ -31,18 +33,18 @@ router.get("/profile", function (req, res) {
 
 router.post("/register", (req, res) => {
   console.log("Req del POST", req.body);
-  if (req.body.passwordRegister !== req.body.password2Register) {
+  if (req.body.password !== req.body.password2Register) {
     console.log("passwords are not equals");
     res.redirect("/");
   } else {
-    const saltHash = genPassword(req.body.passwordRegister);
+    const saltHash = genPassword(req.body.password);
     const salt = saltHash.salt,
       hash = saltHash.hash,
       correo = req.body.emailRegister,
       name = req.body.nameRegister,
       phone = req.body.phoneRegister;
     const newUser = {
-      username: req.body.usernameRegister,
+      username: req.body.username,
       hash: hash,
       salt: salt,
       email: correo,
@@ -50,7 +52,7 @@ router.post("/register", (req, res) => {
       phone,
     };
     mongo.users.insert(newUser).finally(() => {
-      res.redirect("/user");
+      res.redirect(307, "/login");
     });
   }
 });

@@ -6,24 +6,27 @@ require("dotenv").config();
 
 passport.use(
   new Strategy((username, password, cb) => {
+    console.log("Buscando usuario");
     mongo.users.findByUsername(username, function (err, user) {
       if (err) {
         return cb(err);
       }
       if (!user) {
+        console.log("no econtro al usuario");
         return cb(null, false);
       }
       const isValid = validPassword(password, user.hash, user.salt);
       if (!isValid) {
+        console.log("contraseña no es");
         return cb(null, false);
       }
+      console.log("User found");
       return cb(null, user);
     });
   })
 );
 
 passport.serializeUser(function (user, cb) {
-  console.log("Serializando el usuario");
   cb(null, user._id);
 });
 
@@ -43,7 +46,7 @@ const configurePassport = (app) => {
       secret: process.env.SECRET || "yUQz+:ZS-5pK=,7bcR!%r&P)UW[Xv=",
       resave: false,
       saveUninitialized: false,
-      cookie: { expires: new Date(Date.now() + 900000) },
+      // cookie: { expires: new Date(Date.now() + 900000) },
     })
   );
 

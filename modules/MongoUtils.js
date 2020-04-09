@@ -17,7 +17,6 @@ function MongoUtils() {
 
   // Connect to the DB
   mu.connect = () => {
-    console.log("Connecting to", DB_NAME);
     const options = { useUnifiedTopology: true, useNewUrlParser: true };
     const client = new MongoClient(url, options);
     return client.connect();
@@ -32,7 +31,6 @@ function MongoUtils() {
       return usuarios.findOne(query)
         .then( user => {
           if(!user) return usuarios.insertOne(userData);
-          console.log("Usuario existente");
         }).finally(() => client.close());
     });
   };

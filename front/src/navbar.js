@@ -13,48 +13,49 @@ function Navbar(props) {
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
-        <a
+        <Link
+          to="/"
           className="navbar-brand"
           href="/"
-          style={{ backgroundImage: "url(" + logo + ")" }}
-        ></a>
-        <div className="table">
-          <ul className="navbar-nav m-2">
-            <Link to="/">
-              <li className="nav-item">Home</li>
-            </Link>
-            <li
-              className="nav-item"
-              style={{ backgroundImage: "url(" + cart + ")" }}
-            >
-              <a className="nav-link" href="#">
-                Car
-              </a>
-            </li>
+          style={{ backgroundImage: "url(" + logo + ")"}}
+        ></Link>
+        <div className="navbar-nav">
+            <a className="nav-item">
+              <img src={cart} width="40" height="40" />
+            </a>
 
             {!props.user ? (
               <Link to="/login">
-                <li className="nav-item">
-                  <img src={user} />
-                  Iniciar Sesion
-                </li>
+                <img src={user} width="40" height="40" />
               </Link>
             ) : (
-              <li className="nav-item">{props.user.username}</li>
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                {props.user.username}
+              </a>
             )}
-
-            <Link to="/logout">
-              <li
-                className="nav-item"
+            <div
+              className="dropdown-menu"
+              aria-labelledby="navbarDropdownMenuLink"
+            >
+              <Link
+                className="dropdown-item"
+                to="/logout"
                 style={{ backgroundImage: "url(" + logout + ")" }}
               >
                 Cerrar Sesion
-              </li>
-            </Link>
-            <Link to="/register">
-              <li className="nav-item">Registrarse</li>
-            </Link>
-          </ul>
+              </Link>
+              <Link className="dropdown-item" to="/register">
+                Registrarse
+              </Link>
+            </div>
         </div>
       </nav>
     </div>

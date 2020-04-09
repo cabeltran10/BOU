@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "./navbar.js";
+import Navbar from "./Navbar.js";
 import FormLogin from "./forms/FormLogin";
 import FormRegister from "./forms/FormRegister";
 import Logout from "./Logout";
@@ -7,6 +7,7 @@ import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ListStore from "./ListStore";
 import ShoppingCart from "./ShoppingCart";
+import Scan from "./Scan";
 import './index.css';
 
 const shops = [
@@ -65,7 +66,7 @@ function App(props) {
         <Navbar setUser={setUser} user={user}></Navbar>
         <ListStore shops= {shops} />
         <ShoppingCart products={products} />
-
+          
         <Switch>
           <Route path="/" exact component={() => <Home user={user} />} />
           <Route

@@ -10,6 +10,13 @@ import { Link } from "react-router-dom";
 // Navbar.propTypes = {};
 
 function Navbar(props) {
+
+let divStyle = {
+  color: 'white',
+  backgroundImage: 'url(' + logo + ')',
+  width:'25rem'
+};
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
@@ -17,8 +24,8 @@ function Navbar(props) {
           to="/"
           className="navbar-brand"
           href="/"
-          style={{ backgroundImage: "url(" + logo + ")"}}
-        ></Link>
+     
+        > <img src={logo}></img></Link>
         <div className="navbar-nav ml-auto">
             <a className="nav-item">
               <img src={cart} width="40" height="40" />

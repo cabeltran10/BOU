@@ -2,6 +2,7 @@
 import React, {Component, useState} from 'react';
 
 
+
 function ShoppingCart(props){
 
 const [total, setTotal]=React.useState(0);
@@ -13,7 +14,7 @@ let onClickTotal =(item)=>
  setQuantity(quantity+1)
 
 }
-    
+
     
     return ( 
 	

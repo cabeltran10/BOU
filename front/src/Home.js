@@ -58,22 +58,12 @@ const item = {
 
 function Home(props) {
 
-     let removeItem = (item) =>
-    {
-        this.setState((currentState) =>
-         {
-          products:currentState.items.filter((c) =>{
-            return c.id!== item.id
-          })
-         } )
-    }
-
   return (
     <div>
      <div className="container">
       {!props.user ? "User not logged" : `Welcome Back!${props.user.username}`}
       <ListStore shops={shops} />
-      <ShoppingCart products={products} removeItem={removeItem} />
+      <ShoppingCart products={products}/>
       <AddToCart item={item} />
     </div>
     </div>

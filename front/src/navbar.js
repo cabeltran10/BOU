@@ -1,9 +1,9 @@
 import React from "react";
 
-import logo from "./bou.svg";
-import user from "./user.svg";
-import cart from "./cart.png";
-import logout from "./logout.png";
+import logo from "./img/bou.svg";
+import user from "./img/user.svg";
+import cart from "./img/cart.png";
+import logout from "./img/logout.png";
 import { Link } from "react-router-dom";
 
 function Navbar(props) {
@@ -42,10 +42,6 @@ function Navbar(props) {
           >
             <Link className="dropdown-item" to="/logout">
               <img src={logout} alt="logout" width="20" height="20" />
-            </Link>
-
-            <Link className="dropdown-item" to="/register">
-              Registrarse
             </Link>
           </div>
         </div>

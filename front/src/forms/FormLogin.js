@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 function FormLogin(props) {
   return (
     <div>
@@ -24,6 +24,9 @@ function FormLogin(props) {
             required
           />
         </div>
+        <Link to="/register">
+          Registrarse
+        </Link>
         <button type="submit">Submit</button>
       </form>
     </div>

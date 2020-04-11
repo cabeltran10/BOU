@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import QrReader from "react-qr-reader";
 
-function Scan(props) {
+function Scan({match}) {
   const handleError = (err) => {
     console.log(err);
   };
   let bool = false;
-  const handleScan = (data) => {
-    console.log(data);
-    if (!bool) fetch(`/Nike/${data}`);
+  const handleScan = (productId) => {
+    console.log(productId);
+    console.log(match);
+    if (!bool) fetch(`/${match.params.name}/${productId}`);
     bool = true;
   };
 

@@ -14,8 +14,7 @@ function Navbar(props) {
           to="/"
           className="navbar-brand"
           href="/"
-          style={{ backgroundImage: "url(" + logo + ")" }}
-        ></Link>
+        ><img src={logo}/></Link>
         <div className="navbar-nav">
           <Link to="/payment">
             <img alt="Go to pay" src={cart} width="40" height="40" />

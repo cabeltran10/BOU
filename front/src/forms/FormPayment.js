@@ -1,6 +1,37 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import QrReader from "react-qr-reader";
 
 function FormPayment(props) {
+  const [qr, setQr] = useState({});
+  const [camera, setCamera] = useState(false);
+
+  const handleError = (err) => {
+    console.log(err);
+  };
+
+  const handleScan = (data) => {
+    console.log(data);
+    if (data) {
+      setQr({
+        result: data,
+      });
+    }
+  };
+
+  const cameraQR = () => {
+
+    return (
+      <div>
+        <QrReader
+          delay={300}
+          onError={handleError}
+          onScan={handleScan}
+          style={{ width: "30%" }}
+        />
+      </div>
+    );
+  };
+
   return (
     <div>
       <form method="POST" id="customer-form">
@@ -29,6 +60,10 @@ function FormPayment(props) {
         </div>
         <button type="submit">¡Pagar ahora!</button>
       </form>
+      <div>
+        <button onClick={() => setCamera(!camera)}>Leer QR</button>
+        {!camera? <div></div>: cameraQR()}
+      </div>
     </div>
   );
 }

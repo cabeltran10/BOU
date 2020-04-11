@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 function Navbar(props) {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg" style={{width: "100%"}}>
+      <nav>
         <Link
           to="/"
           className="navbar-brand"

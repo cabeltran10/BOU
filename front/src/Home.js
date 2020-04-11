@@ -33,18 +33,21 @@ const products = [
     name: "Karen Isgrigg",
     price: "400",
     imageURL: "http://localhost:5001/karen.jpg",
+    quantity:1
   },
   {
     id: "238470",
     name: "Richard Kalehoff",
     price: "400",
     imageURL: "http://localhost:5001/richard.jpg",
+     quantity:1
   },
   {
     id: "2037492",
     name: "Vestido negro",
     price: "400",
     imageURL: "http://localhost:5001/tyler.jpg",
+     quantity:1
   },
 ];
 
@@ -57,6 +60,22 @@ const item = {
 };
 
 function Home(props) {
+
+
+  function quantitylist (list){
+
+    const newlist={};
+    list.forEach(p=> newlist[p] ={name:p.name, price:p.price, id:p.id, imageURL:p.imageURL, quantity:0})
+    return newlist;
+  }
+
+  const [productsnew, setproducts]= React.useState(quantitylist(products));
+
+  const remove = product=>{
+    const list= Object.assign({},productsnew);
+    setproducts(list);
+  }
+
 
   return (
     <div>

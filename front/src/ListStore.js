@@ -11,7 +11,7 @@ render()
 
   <ul className='shop-list'>
 
-  { this.props.shops.map(shop => (
+  {this.props.shops.map(shop => (
 
 
     <li key={shop.id} className='card shop-list-item'>

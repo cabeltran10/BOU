@@ -10,10 +10,11 @@ const [quantity, setQuantity]=React.useState(1);
 
 let onClickTotal =(item)=>
 {
- setTotal(total+item.price*quantity);
- setQuantity(quantity+1)
+ setTotal(total+item.price*item.quantity);
+ setQuantity(item.quantity+1);
 
 }
+
 
     
     return ( 
@@ -38,7 +39,7 @@ let onClickTotal =(item)=>
            <button onClick={ ( )=> onClickTotal(item) }  className='item-add'>
             +
             </button>
-            <span>{quantity}</span>
+            <span>{item.quantity}</span>
 
 
             

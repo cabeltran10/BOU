@@ -31,7 +31,7 @@ function Home(props) {
   return (
     <div>
      <div className="container">
-      {!props.user ? " " : `Welcome Back!${props.user.username}`}
+      {!props.user ? " " : `¡Bienvenido${props.user.username}!`}
       <ListStore shops={shops} />
     </div>
     </div>

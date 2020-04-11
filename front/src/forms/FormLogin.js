@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 function FormLogin(props) {
   return (
-    <div>
+    <div className="container">
+    <h2>Inicia sesión</h2>
       <form method="POST" action="/login">
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Nombre de usuario</label>
           <input
             className="form-control"
             type="text"
@@ -14,8 +15,8 @@ function FormLogin(props) {
             required
           />
         </div>
-        <div className="form_group">
-          <label htmlFor="password">Password</label>
+        <div className="form-group">
+          <label htmlFor="password">Contraseña</label>
           <input
             type="password"
             name="password"
@@ -24,11 +25,16 @@ function FormLogin(props) {
             required
           />
         </div>
-        <Link to="/register">
-          Registrarse
-        </Link>
-        <button type="submit">Submit</button>
+
       </form>
+       <button type="submit" className="shop-go">Entrar</button>
+
+      <div>
+        <Link to="/register">
+          ¿No eres un miembro? Registrate
+        </Link>
+       
+      </div>
     </div>
   );
 }

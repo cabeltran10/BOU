@@ -1,5 +1,7 @@
+import  {Component} from 'react';
 import React, { useState } from "react";
 import AddToCart from "./AddToCart";
+
 
 const item = {
   id: "91823",
@@ -58,6 +60,7 @@ function ShoppingCart(props) {
               </button>
 
               <p>${item.price}</p>
+
             </div>
           </div>
         ))}

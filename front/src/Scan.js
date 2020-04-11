@@ -8,9 +8,8 @@ function Scan(props) {
   let bool = false;
   const handleScan = (data) => {
     console.log(data);
-    if(!bool) fetch(`/Nike/${data}`);
+    if (!bool) fetch(`/Nike/${data}`);
     bool = true;
-
   };
 
   return (

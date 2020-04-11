@@ -1,11 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ListStore from "./ListStore";
 import ShoppingCart from "./ShoppingCart";
-
 import AddToCart from "./AddToCart";
-// import PropTypes from 'prop-types';
-
-// Home.propTypes = {};
 
 const shops = [
   {

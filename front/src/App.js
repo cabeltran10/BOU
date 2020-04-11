@@ -5,20 +5,16 @@ import FormRegister from "./forms/FormRegister";
 import Logout from "./Logout";
 import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
 import "./index.css";
+import FormPayment from "./forms/FormPayment";
 
 function App(props) {
   const [user, setUser] = useState(null);
-  const [message, setMessage] = useState("");
-  useEffect(() => {
-    console.log(message);
-  }, [message]);
-
   useEffect(() => {
     fetch("/getUser")
       .then((res) => res.json())
       .then((user) => setUser(user));
+    // console.log(ePayco);
   }, [user]);
 
   return (
@@ -29,14 +25,7 @@ function App(props) {
           <Route path="/" exact component={() => <Home user={user} />} />
           <Route
             path="/login"
-            component={() => (
-              <FormLogin
-                message={message}
-                setMessage={setMessage}
-                user={user}
-                setUser={setUser}
-              />
-            )}
+            component={() => <FormLogin user={user} setUser={setUser} />}
           />
           <Route
             path="/register"
@@ -46,6 +35,10 @@ function App(props) {
             path="/logout"
             component={() => <Logout user={user} setUser={setUser} />}
           />
+          <Route
+            path="/payment"
+            component={() => <FormPayment user={user} />}
+          ></Route>
         </Switch>
       </div>
     </Router>

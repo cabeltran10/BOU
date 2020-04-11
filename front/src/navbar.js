@@ -1,13 +1,10 @@
 import React from "react";
-// import PropTypes from "prop-types";
 
 import logo from "./bou.svg";
 import user from "./user.svg";
 import cart from "./cart.png";
 import logout from "./logout.png";
 import { Link } from "react-router-dom";
-
-// Navbar.propTypes = {};
 
 function Navbar(props) {
   return (
@@ -20,16 +17,15 @@ function Navbar(props) {
           style={{ backgroundImage: "url(" + logo + ")" }}
         ></Link>
         <div className="navbar-nav">
-          <a className="nav-item">
-            <img src={cart} width="40" height="40" />
-          </a>
-
+          <Link to="/payment">
+            <img alt="Go to pay" src={cart} width="40" height="40" />
+          </Link>
           {!props.user ? (
             <Link to="/login">
-              <img src={user} width="40" height="40" />
+              <img src={user} alt="login" width="40" height="40" />
             </Link>
           ) : (
-            <a
+            <label
               className="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdownMenuLink"
@@ -39,14 +35,14 @@ function Navbar(props) {
               aria-expanded="false"
             >
               {props.user.username}
-            </a>
+            </label>
           )}
           <div
             className="dropdown-menu"
             aria-labelledby="navbarDropdownMenuLink"
           >
             <Link className="dropdown-item" to="/logout">
-              <img src={logout} width="20" height="20" />
+              <img src={logout} alt="logout" width="20" height="20" />
             </Link>
 
             <Link className="dropdown-item" to="/register">

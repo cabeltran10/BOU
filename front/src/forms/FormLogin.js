@@ -1,25 +1,9 @@
-import React, { useEffect } from "react";
-// import PropTypes from "prop-types";
-
-// FormLogin.propTypes = {};
+import React from "react";
 
 function FormLogin(props) {
-  const login = () => {
-    props.setMessage("Loading");
-  };
-
-  const renderNotLogged = () => {
-    if (props.message !== "Loading") return;
-    return (
-      <div style={{ WebkitTextFillColor: "red" }}>
-        Contraseña o Usuario incorrecto
-      </div>
-    );
-  };
   return (
     <div>
-      {renderNotLogged()}
-      <form method="POST" action="/login" onSubmit={login}>
+      <form method="POST" action="/login">
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input

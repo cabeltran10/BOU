@@ -10,7 +10,8 @@ router.get("/login", function (req, res) {
 });
 
 router.post(
-  "/login", passport.authenticate("local", { failureRedirect: "/login" }),
+  "/login",
+  passport.authenticate("local", { failureRedirect: "/login" }),
   function (req, res) {
     console.log("Loggeado");
     res.redirect("/");

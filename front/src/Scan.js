@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import QrReader from "react-qr-reader";
 
-function Scan({match}) {
+function Scan({ match }) {
   const handleError = (err) => {
     console.log(err);
   };

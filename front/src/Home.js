@@ -69,7 +69,7 @@ function Home(props) {
   };
 
   return (
-     <div className="container">
+    <div className="container">
       {!props.user ? " " : `¡Bienvenido${props.user.username}!`}
       <ListStore shops={shops} />
     </div>

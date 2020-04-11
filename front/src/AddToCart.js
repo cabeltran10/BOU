@@ -9,7 +9,7 @@ render(){
 const item= this.props.item;
 	
 	return(
-		<div className="container">
+		<div className="container add-cart">
 		<div className="card add">
 		<div className='row align-items-start' style={{backgroundImage: `url(${item.imageURL})`}}>
 		</div>

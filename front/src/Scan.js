@@ -11,7 +11,6 @@ function Scan({ match }) {
     let url = `/${match.params.id}/${productId}`;
     console.log(url);
     if (productId) {
-      // fetch(url);
       alert(url);
       window.location.href = url;
     }

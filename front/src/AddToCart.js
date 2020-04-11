@@ -10,7 +10,7 @@ function AddToCart({ match }) {
     const url = `/shop/${match.params.id}/item/${match.params.productId}`;
 		console.log(url);		
 		const res = await fetch(url);
-    const tempItem = await res.json();
+		const tempItem = await res.json();
     setItem(tempItem);
   };
 

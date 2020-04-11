@@ -5,8 +5,15 @@ import React, {Component, useState} from 'react';
 
 function ShoppingCart(props){
 
+
+let gettotal =()=>
+{   
+    props.products.forEach(p=> total+p.price);
+}
+
 const [total, setTotal]=React.useState(0);
 const [quantity, setQuantity]=React.useState(1);
+
 
 let onClickTotal =(item)=>
 {
@@ -56,7 +63,7 @@ let onClickremove =(item)=>
             Remove
             </button>
 
-                   <p>{item.price}</p>
+                   <p>${item.price}</p>
             
              </div>
              </div>
@@ -67,7 +74,7 @@ let onClickremove =(item)=>
 
         <div className='total' >
         <h2>Total</h2>
-        <p>{total}</p>
+        <p>${total}</p>
         </div>
           </div>
 

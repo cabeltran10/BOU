@@ -9,6 +9,12 @@ router.get("/login", function (req, res) {
   res.redirect("/");
 });
 
+
+router.get("/shop/:id/item/:productId", (req,res) => {
+  console.log(req.params);
+  res.json({name: "product", imageURL: "", description: "product test", price: 999});
+});
+
 router.post(
   "/login",
   passport.authenticate("local", { failureRedirect: "/login" }),

@@ -46,6 +46,12 @@ p{
     
 }
 
+ul.shop-list{
+  display: "flex";
+  flex-wrap: "wrap";
+  flex-direction: "row";
+}
+
 
 div.navbar-nav {
   display: flex;

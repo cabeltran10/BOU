@@ -5,15 +5,15 @@ function Scan({ match }) {
   const handleError = (err) => {
     console.log(err);
   };
-  let bool = false;
-  const handleScan = (productId) => {
+  const handleScan = async (productId) => {
     console.log(productId);
     console.log(match);
-    let url = `/${match.params.name}/${productId}`;
+    let url = `/${match.params.id}/${productId}`;
     console.log(url);
-    if (productId && !bool) {
-      fetch(url);
-      bool = true;
+    if (productId) {
+      // fetch(url);
+      alert(url);
+      window.location.href = url;
     }
   };
 

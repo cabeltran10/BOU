@@ -56,7 +56,7 @@ function ListStore(props) {
             <img className="card-img-top shop-avatar" src={shop.imageURL} />
             <div className="card-body shop-details">
               <h3 className="card-title">{shop.name} </h3>
-              <Link to={`/${shop.name}`}>
+              <Link to={`/${shop.id}`}>
                 <button className="shop-go">Comprar</button>
               </Link>
             </div>

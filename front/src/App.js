@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./index.css";
 import FormPayment from "./forms/FormPayment";
 import Scan from "./Scan";
+import AddToCart from "./AddToCart";
 
 function App(props) {
   const [user, setUser] = useState({});
@@ -40,7 +41,8 @@ function App(props) {
               path="/payment"
               component={() => <FormPayment user={user} />}
             />
-            <Route path="/:name" component={Scan} />
+            <Route exact path="/:id/:productId" component={AddToCart} />
+            <Route exact path="/:id" component={Scan} />
           </Switch>
         </div>
       </div>

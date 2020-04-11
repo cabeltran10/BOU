@@ -37,9 +37,11 @@ function Scan(props){
     );
   };
 
+
+
     return (
     <div>
-      <div>
+      <div className="container">
         <button className="shop-go" onClick={() => setCamera(!camera)}>Escanear QR</button>
         {!camera? <div></div>: cameraQR()}
       </div>

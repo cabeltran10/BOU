@@ -49,7 +49,7 @@ function Home(props) {
   return (
     <div>
       {!props.user ? " " : `¡Bienvenido${props.user.username}!`}
-      <ListStore />
+      <ListStore shops={props.shops} setShops={props.setShops} />
     </div>
   );
 }

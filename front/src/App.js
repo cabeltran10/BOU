@@ -12,11 +12,23 @@ import AddToCart from "./AddToCart";
 
 function App(props) {
   const [user, setUser] = useState({});
+  const [shops, setShops] = useState([]);
   useEffect(() => {
     fetch("/getUser")
       .then((res) => res.json())
       .then((user) => setUser(user));
   }, [user]);
+
+  useEffect(() => {
+    fetchShops();
+  }, []);
+  const fetchShops = async () => {
+    const url = "/shops";
+    const res = await fetch(url);
+    const shops = await res.json();
+    console.log(shops);
+    setShops(shops);
+  };
 
   return (
     <Router>
@@ -24,7 +36,7 @@ function App(props) {
         <Navbar setUser={setUser} user={user}></Navbar>
         <div className="container">
           <Switch>
-            <Route path="/" exact component={() => <Home user={user} />} />
+            <Route path="/" exact component={() => <Home user={user} shops={shops} setShops={setShops}/>} />
             <Route
               path="/login"
               component={() => <FormLogin user={user} setUser={setUser} />}

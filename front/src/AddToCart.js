@@ -9,12 +9,14 @@ render(){
 const item= this.props.item;
 	
 	return(
-		<div>
-
+		<div className="container">
+		<div className="card add">
 		<div className='row align-items-start' style={{backgroundImage: `url(${item.imageURL})`}}>
 		</div>
 
-
+		<div className="row">
+			
+			<div className="col-md">
 			<div className='description'>
 			<p>{item.name}</p>
 			</div>
@@ -26,11 +28,18 @@ const item= this.props.item;
 			<div className='price-tag'>
 			<p>{item.price}</p>
 			</div>
+			</div>
 
+			<div className="col-sm">
 			<button className='shop-go'>
 			Agregar
 			</button>
 
+			</div>
+
+			</div>
+
+		</div>
 		</div>
 
 

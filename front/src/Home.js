@@ -80,7 +80,7 @@ function Home(props) {
   return (
     <div>
      <div className="container">
-      {!props.user ? "User not logged" : `Welcome Back!${props.user.username}`}
+      {!props.user ? " " : `Welcome Back!${props.user.username}`}
       <ListStore shops={shops} />
       <ShoppingCart products={productsnew} onDelete={remove}/>
       <AddToCart item={item} />

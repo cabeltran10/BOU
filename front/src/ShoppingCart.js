@@ -15,18 +15,27 @@ let onClickTotal =(item)=>
 
 }
 
+let onClickremove =(item)=>
+{
+ setTotal(total-item.price*item.quantity);
+ setQuantity(item.quantity=0);
+ props.onDelete(item.id);
+
+}
 
     
     return ( 
 	
       <div>
+        <h1>Resumen de productos</h1>
+       
 
-        <ul className='product-list'>
+        <div className='card product-list'>
     
         { props.products.map(item => (
     
-    
-            <li key={item.id} className='product-list-item' >
+        <div className='container'>
+            <div key={item.id} className='product-list-item' >
             <div className='item-image' style={ {backgroundImage: `url(${item.imageURL})`}}>
             </div>
 
@@ -43,22 +52,25 @@ let onClickTotal =(item)=>
 
 
             
-            <button onClick={( )=> props.onDelete(item.id)} className='item-remove'>
+            <button onClick={( )=> onClickremove(item)} className='item-remove'>
             Remove
             </button>
 
                    <p>{item.price}</p>
             
-             </li>
+             </div>
+             </div>
             ))}
     
-        </ul>
+        </div>
+
 
         <div className='total' >
-        <p>Total</p>
+        <h2>Total</h2>
         <p>{total}</p>
         </div>
           </div>
+
     
     )
         }

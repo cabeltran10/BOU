@@ -11,11 +11,6 @@ import { Link } from "react-router-dom";
 
 function Navbar(props) {
 
-let divStyle = {
-  color: 'white',
-  backgroundImage: 'url(' + logo + ')',
-  width:'25rem'
-};
 
   return (
     <div>

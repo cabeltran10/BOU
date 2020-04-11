@@ -26,6 +26,14 @@ div.navbar-nav {
   width: 20rem;
 }
 
+.add {
+  width: 40rem;
+}
+
+.add shop-go{
+  justify-content: center;
+}
+
 .shop-list-item img{
   width: 15rem;
   justify-content: flex-start;

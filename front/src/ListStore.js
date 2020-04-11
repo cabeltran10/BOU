@@ -8,7 +8,7 @@ render()
 {
   return (
     <div>
-
+  <h1>Selecciona la tienda</h1>
   <ul className='shop-list'>
 
   {this.props.shops.map(shop => (
@@ -20,14 +20,17 @@ render()
     </img>
 
 
-    <div className='shop-details'>
-    <p>{shop.name}</p>
-    </div>
+    <div className='card-body shop-details'>
+
+    <h3 className='card-title'>{shop.name} </h3>
+   
+
 
     <button className='shop-go'>
     Comprar
     </button>
-    
+
+    </div>
      </li>
     ))}
 

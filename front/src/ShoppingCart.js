@@ -1,24 +1,48 @@
 
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 
-class ShoppingCart extends Component {
 
-state={
-  total:' '
+
+function ShoppingCart(props){
+
+
+let gettotal =()=>
+{   
+    props.products.forEach(p=> total+p.price);
 }
 
-render(){
+const [total, setTotal]=React.useState(0);
+const [quantity, setQuantity]=React.useState(1);
+
+
+let onClickTotal =(item)=>
+{
+ setTotal(total+item.price*item.quantity);
+ setQuantity(item.quantity+1);
+
+}
+
+let onClickremove =(item)=>
+{
+ setTotal(total-item.price*item.quantity);
+ setQuantity(item.quantity=0);
+ props.onDelete(item.id);
+
+}
+
     
     return ( 
-    	
+	
       <div>
+        <h1>Resumen de productos</h1>
+       
 
-        <ul className='product-list'>
+        <div className='card product-list'>
     
-        { this.props.products.map(item => (
+        { props.products.map(item => (
     
-    
-            <li key={item.id} className='product-list-item' >
+        <div className='container'>
+            <div key={item.id} className='product-list-item' >
             <div className='item-image' style={ {backgroundImage: `url(${item.imageURL})`}}>
             </div>
 
@@ -28,42 +52,34 @@ render(){
      
             </div>
 
-    
-    		<select className="mdb-select md-form" name="quantity" selected="1" >
-    		
-	<option value ="1" >1</option>
-	<option value ="2" >2</option>
-	<option value ="3">3</option>
-	<option value ="4">4</option>
-	<option value ="5">5</option>
-	<option value ="6">6</option>
-	<option value ="7">7</option>
-	<option value ="8">8</option>
-	<option value ="9">9</option>
-	<option value ="10">10</option>
-
-    		</select>
+           <button onClick={ ( )=> onClickTotal(item) }  className='item-add'>
+            +
+            </button>
+            <span>{item.quantity}</span>
 
 
             
-            <button onClick={( )=>this.props.OnRemoveItem(item)} className='item-remove'>
+            <button onClick={( )=> onClickremove(item)} className='item-remove'>
             Remove
             </button>
 
-                   <p>{item.price}</p>
+                   <p>${item.price}</p>
             
-             </li>
+             </div>
+             </div>
             ))}
     
-        </ul>
+        </div>
+
 
         <div className='total' >
-        <p>Total</p>
-        <p>{this.state.total}</p>
+        <h2>Total</h2>
+        <p>${total}</p>
         </div>
           </div>
+
     
     )
         }
-}
+
 export default ShoppingCart

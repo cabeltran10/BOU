@@ -6,28 +6,33 @@ render()
 {
   return (
     <div>
+  <h1>Selecciona la tienda</h1>
+  <ul className='shop-list'>
 
-  <ol className='shop-list'>
-
-  { this.props.shops.map(shop => (
+  {this.props.shops.map(shop => (
 
 
-    <li key={shop.id} className='shop-list-item'>
-    <div className='shop-avatar' style={ {backgroundImage: `url(${shop.imageURL})`}}>
-    </div>
+    <li key={shop.id} className='card shop-list-item'>
 
-    <div className='shop-details'>
-    <p>{shop.name}</p>
-    </div>
+    <img className='card-img-top shop-avatar' src={shop.imageURL}>
+    </img>
+
+
+    <div className='card-body shop-details'>
+
+    <h3 className='card-title'>{shop.name} </h3>
+   
+
 
     <button className='shop-go'>
     Comprar
     </button>
-    
+
+    </div>
      </li>
     ))}
 
-  </ol>
+  </ul>
 
     </div>
   );

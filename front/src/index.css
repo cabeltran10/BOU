@@ -17,9 +17,40 @@ code {
     monospace;
 }
 
+h1,h2,h3{
+font-family: 'Raleway', sans-serif;
+}
+
+p{
+  font-family: 'Lato', sans-serif;
+    
+}
+
+p{
+  font-family: 'Lato', sans-serif;
+    
+}
+
 div.navbar-nav {
   display: flex;
   flex-direction: row;
+}
+
+.shop-list-item{
+  width: 20rem;
+}
+
+.add {
+  width: 40rem;
+}
+
+.add shop-go{
+  justify-content: center;
+}
+
+.shop-list-item img{
+  width: 15rem;
+  justify-content: flex-start;
 }
 
 .navbar {
@@ -28,8 +59,15 @@ div.navbar-nav {
 
 .navbar-brand {
   color: white;
-  padding: 10px 50px 50px;
+  width:450px;
+
 }
+
+.navbar-brand img{
+max-width:500px; margin-top: -7px;
+padding-right:2rem;
+}
+
 
 .navbar-nav {
   float: right;
@@ -56,6 +94,11 @@ div.navbar-nav {
   font-size: 11px;
   line-height: 32px;
   text-transform: uppercase;
+}
+
+.shop-list-item shop-go{
+  float:right;
+  justify-content: flex-end;
 }
 
 .item-remove {

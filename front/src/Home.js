@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ListStore from "./ListStore";
 
 const shops = [
@@ -46,32 +46,10 @@ const products = [
 ];
 
 function Home(props) {
-  const [productsnew, setproducts] = useState(products);
-
-  function quantitylist(list) {
-    const newlist = {};
-    list.forEach(
-      (p) =>
-        (newlist[p] = {
-          name: p.name,
-          price: p.price,
-          id: p.id,
-          imageURL: p.imageURL,
-          quantity: 0,
-        })
-    );
-    return newlist;
-  }
-
-  const remove = (itemId) => {
-    const list = productsnew.filter((item) => item.id !== itemId);
-    setproducts(list);
-  };
-
   return (
     <div>
       {!props.user ? " " : `¡Bienvenido${props.user.username}!`}
-      <ListStore shops={shops} />
+      <ListStore />
     </div>
   );
 }

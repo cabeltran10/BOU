@@ -1,4 +1,3 @@
-import  {Component} from 'react';
 import React, { useState } from "react";
 import AddToCart from "./AddToCart";
 
@@ -16,8 +15,8 @@ function ShoppingCart(props) {
     props.products.forEach((p) => total + p.price);
   };
 
-  const [total, setTotal] = React.useState(0);
-  const [quantity, setQuantity] = React.useState(1);
+  const [total, setTotal] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
   let onClickTotal = (item) => {
     setTotal(total + item.price * item.quantity);

@@ -27,11 +27,13 @@ function MongoUtils() {
   mu.users.insert = (userData) => {
     return mu.connect().then((client) => {
       const usuarios = client.db(DB_NAME).collection("users");
-      const query = {username : userData.username};
-      return usuarios.findOne(query)
-        .then( user => {
-          if(!user) return usuarios.insertOne(userData);
-        }).finally(() => client.close());
+      const query = { username: userData.username };
+      return usuarios
+        .findOne(query)
+        .then((user) => {
+          if (!user) return usuarios.insertOne(userData);
+        })
+        .finally(() => client.close());
     });
   };
 
@@ -61,31 +63,37 @@ function MongoUtils() {
     });
   };
 
-  mu.shops={};
-  mu.shops.findShop=(shopname) =>{
+  mu.shops = {};
 
-     return mu.connect().then((client) => {
+  mu.shops.findAll = (shopId) => {
+    return mu.connect().then((client) => {
       const shops = client.db(DB_NAME).collection("shops");
-      const query = { shopname };
+      const query = {};
 
+      return shops.find(query).toArray().finally(() => client.close());
+    });
+  };
+
+  mu.shops.findProductInShop = (shopId, productId) => {
+    return mu.connect().then((client) => {
+      const shops = client.db(DB_NAME).collection("shops");
+      const query = { _id: ObjectId(shopId) };
+      console.log("query", query);
       return shops
         .findOne(query)
-        .then((user, err) => {
-          cb(err, user);
+        .then((shop) => {
+          console.log(shop);
+          for (let product of shop.products) {
+            console.log(productId);
+            if (product.id === productId) {
+              return product;
+            }
+          }
+          return null;
         })
         .finally(() => client.close());
     });
-
-  }
-
-
-  mu.products.findproduct=(shopname, id) =>{
-
-    const  shop= mu.shops.findShop(shopname);
-    let found = shop.products.find(element => element.id ===id )
-    return found;
-
-  }
+  };
 
   return mu;
 }

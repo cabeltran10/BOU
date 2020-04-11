@@ -9,10 +9,24 @@ router.get("/login", function (req, res) {
   res.redirect("/");
 });
 
+router.get("/shops", (req, res) => {
+  // metodo mongo utils
+  console.log("llega a shops");
+  mongo.shops.findAll()
+    .then( shops => {
+      console.log(shops);
+      res.json(shops);      
+    });
+});
 
-router.get("/shop/:id/item/:productId", (req,res) => {
+router.get("/shop/:shopId/item/:productId", (req, res) => {
   console.log(req.params);
-  res.json({name: "product", imageURL: "", description: "product test", price: 999});
+  mongo.shops
+    .findProductInShop(req.params.shopId, parseInt(req.params.productId))
+    .then((product) => {
+      console.log(product);
+      res.json(product);
+    });
 });
 
 router.post(

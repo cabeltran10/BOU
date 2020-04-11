@@ -43,7 +43,7 @@ let onClickTotal =(item)=>
 
 
             
-            <button onClick={( )=> props.removeItem(item)} className='item-remove'>
+            <button onClick={( )=> props.onDelete(item.id)} className='item-remove'>
             Remove
             </button>
 

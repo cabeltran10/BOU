@@ -69,10 +69,10 @@ function Home(props) {
     return newlist;
   }
 
-  const [productsnew, setproducts]= React.useState(quantitylist(products));
+  const [productsnew, setproducts]= React.useState(products);
 
-  const remove = product=>{
-    const list= Object.assign({},productsnew);
+  const remove = itemId=>{
+    const list= productsnew.filter(item => item.id !== itemId);
     setproducts(list);
   }
 
@@ -82,7 +82,7 @@ function Home(props) {
      <div className="container">
       {!props.user ? "User not logged" : `Welcome Back!${props.user.username}`}
       <ListStore shops={shops} />
-      <ShoppingCart products={products}/>
+      <ShoppingCart products={productsnew} onDelete={remove}/>
       <AddToCart item={item} />
     </div>
     </div>

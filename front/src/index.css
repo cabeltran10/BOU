@@ -17,6 +17,20 @@ code {
     monospace;
 }
 
+h1,h2,h3{
+font-family: 'Raleway', sans-serif;
+}
+
+p{
+  font-family: 'Lato', sans-serif;
+    
+}
+
+p{
+  font-family: 'Lato', sans-serif;
+    
+}
+
 div.navbar-nav {
   display: flex;
   flex-direction: row;

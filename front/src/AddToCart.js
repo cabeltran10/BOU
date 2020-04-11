@@ -17,8 +17,8 @@ const item= this.props.item;
 		<div className="row">
 			
 			<div className="col-md">
-			<div className='description'>
-			<p>{item.name}</p>
+			<div className='cart-body description'>
+			<h2 className='card-title' title>{item.name}</h2>
 			</div>
 
 			<div className='description'>
@@ -26,7 +26,7 @@ const item= this.props.item;
 			</div>
 
 			<div className='price-tag'>
-			<p>{item.price}</p>
+			<p>${item.price}</p>
 			</div>
 			</div>
 

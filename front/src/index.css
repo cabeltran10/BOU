@@ -134,8 +134,5 @@ padding-right:2rem;
   background-color: rgba(#000, 0.5);
 
   text-transform: uppercase;
-  &:focus {
-    outline: none;
-    border-color: lighten(#3fbfa8, 10%);
-  }
+
 }

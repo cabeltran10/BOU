@@ -15,7 +15,7 @@ function Navbar(props) {
           className="navbar-brand"
           href="/"
         ><img src={logo}/></Link>
-        <div className="navbar-nav">
+        <div className="navbar-nav ml-auto">
           <Link to="/payment">
             <img alt="Go to pay" src={cart} width="40" height="40" />
           </Link>

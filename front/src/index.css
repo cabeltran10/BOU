@@ -16,20 +16,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.container{
+padding-top: 10rem;
+}
 
+.products-resume{
+padding-top: 1rem;
+}
+.add-cart{
+padding-top: 1rem;
+}
 h1,h2,h3{
 font-family: 'Raleway', sans-serif;
 }
-
-p{
-  font-family: 'Lato', sans-serif;
-    
+.label{
+  font-family: 'Raleway', sans-serif;
 }
 
 p{
   font-family: 'Lato', sans-serif;
     
 }
+
 
 div.navbar-nav {
   display: flex;
@@ -37,7 +45,7 @@ div.navbar-nav {
 }
 
 .shop-list-item{
-  width: 20rem;
+  width: 40rem;
 }
 
 .add {

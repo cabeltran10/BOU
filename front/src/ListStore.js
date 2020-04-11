@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-
+import { Link } from "react-router-dom";
+import Scan from "./Scan";
 class ListStore extends Component {
   
 render()
@@ -23,10 +24,11 @@ render()
     <h3 className='card-title'>{shop.name} </h3>
    
 
-
+    <Link to="/scan" component={Scan}>
     <button className='shop-go'>
     Comprar
     </button>
+    </Link>
 
     </div>
      </li>

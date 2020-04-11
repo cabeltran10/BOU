@@ -7,11 +7,13 @@ function FormRegister(props) {
   }
 
   return (
-    <div className="col-6">
-      <h1>Register</h1>
+    <div className="container">
+     
+
+      <h2>Regístrate</h2>
       <form method="POST" onSubmit={fetching}>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label className="label" htmlFor="username">Nombre de usuario</label>
           <input
             className="form-control"
             type="text"
@@ -21,7 +23,7 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password</label>
+          <label className="label" htmlFor="password">Contraseña</label>
           <input
             type="password"
             name="password"
@@ -31,7 +33,7 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password2Register">Repeat Password</label>
+          <label className="label" htmlFor="password2Register">Repetir contraseña</label>
           <input
             type="password"
             name="password2Register"
@@ -41,7 +43,7 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="nameRegister">Nombre Completo</label>
+          <label className="label"  htmlFor="nameRegister">Nombre Completo</label>
           <input
             type="text"
             name="nameRegister"
@@ -51,7 +53,7 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="phone_register" className="primary">
+          <label  className="label" htmlFor="phone_register" className="primary">
             Celular
           </label>
           <input
@@ -63,7 +65,7 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email_register">Correo</label>
+          <label  className="label" htmlFor="email_register">Correo</label>
           <input
             type="email"
             name="emailRegister"
@@ -72,7 +74,7 @@ function FormRegister(props) {
             required
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className="shop-go">Enviar</button>
       </form>
     </div>
   );

@@ -41,7 +41,7 @@ let onClickremove =(item)=>
     
         { props.products.map(item => (
     
-        <div className='container'>
+        <div className='container products-resume'>
             <div key={item.id} className='product-list-item' >
             <div className='item-image' style={ {backgroundImage: `url(${item.imageURL})`}}>
             </div>

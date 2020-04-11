@@ -30,7 +30,7 @@ function Home(props) {
 
   return (
     <div>
-     <div className="container">
+     <div className="container store">
       {!props.user ? " " : `¡Bienvenido${props.user.username}!`}
       <ListStore shops={shops} />
     </div>

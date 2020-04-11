@@ -1,19 +1,18 @@
 import React from "react";
 
 function FormRegister(props) {
-
-  const fetching = async (e) =>{
+  const fetching = async (e) => {
     fetch("/register");
-  }
+  };
 
   return (
-    <div className="container">
-     
-
+    <div>
       <h2>Regístrate</h2>
       <form method="POST" onSubmit={fetching}>
         <div className="form-group">
-          <label className="label" htmlFor="username">Nombre de usuario</label>
+          <label className="label" htmlFor="username">
+            Nombre de usuario
+          </label>
           <input
             className="form-control"
             type="text"
@@ -23,7 +22,9 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label className="label" htmlFor="password">Contraseña</label>
+          <label className="label" htmlFor="password">
+            Contraseña
+          </label>
           <input
             type="password"
             name="password"
@@ -33,7 +34,9 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label className="label" htmlFor="password2Register">Repetir contraseña</label>
+          <label className="label" htmlFor="password2Register">
+            Repetir contraseña
+          </label>
           <input
             type="password"
             name="password2Register"
@@ -43,7 +46,9 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label className="label"  htmlFor="nameRegister">Nombre Completo</label>
+          <label className="label" htmlFor="nameRegister">
+            Nombre Completo
+          </label>
           <input
             type="text"
             name="nameRegister"
@@ -53,7 +58,7 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label  className="label" htmlFor="phone_register" className="primary">
+          <label className="label" htmlFor="phone_register" className="primary">
             Celular
           </label>
           <input
@@ -65,7 +70,9 @@ function FormRegister(props) {
           />
         </div>
         <div className="form-group">
-          <label  className="label" htmlFor="email_register">Correo</label>
+          <label className="label" htmlFor="email_register">
+            Correo
+          </label>
           <input
             type="email"
             name="emailRegister"
@@ -74,7 +81,9 @@ function FormRegister(props) {
             required
           />
         </div>
-        <button type="submit" className="shop-go">Enviar</button>
+        <button type="submit" className="shop-go">
+          Enviar
+        </button>
       </form>
     </div>
   );

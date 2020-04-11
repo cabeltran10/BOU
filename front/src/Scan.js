@@ -9,12 +9,16 @@ function Scan({ match }) {
   const handleScan = (productId) => {
     console.log(productId);
     console.log(match);
-    if (!bool) fetch(`/${match.params.name}/${productId}`);
-    bool = true;
+    let url = `/${match.params.name}/${productId}`;
+    console.log(url);
+    if (productId && !bool) {
+      fetch(url);
+      bool = true;
+    }
   };
 
   return (
-    <div className="container">
+    <div>
       <QrReader
         delay={300}
         onError={handleError}

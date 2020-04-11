@@ -21,26 +21,28 @@ function App(props) {
     <Router>
       <div>
         <Navbar setUser={setUser} user={user}></Navbar>
-        <Switch>
-          <Route path="/" exact component={() => <Home user={user} />} />
-          <Route
-            path="/login"
-            component={() => <FormLogin user={user} setUser={setUser} />}
-          />
-          <Route
-            path="/register"
-            component={() => <FormRegister user={user} setUser={setUser} />}
-          />
-          <Route
-            path="/logout"
-            component={() => <Logout user={user} setUser={setUser} />}
-          />
-          <Route
-            path="/payment"
-            component={() => <FormPayment user={user} />}
-          />
-          <Route path="/:nombre" component={Scan} />
-        </Switch>
+        <div className="container">
+          <Switch>
+            <Route path="/" exact component={() => <Home user={user} />} />
+            <Route
+              path="/login"
+              component={() => <FormLogin user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/register"
+              component={() => <FormRegister user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/logout"
+              component={() => <Logout user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/payment"
+              component={() => <FormPayment user={user} />}
+            />
+            <Route path="/:name" component={Scan} />
+          </Switch>
+        </div>
       </div>
     </Router>
   );

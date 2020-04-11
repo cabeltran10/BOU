@@ -7,7 +7,11 @@ function Logout(props) {
   useEffect(() => {
     props.setUser(null);
   });
-  return <div><h2>¡Gracias por visitarnos!</h2></div>;
+  return (
+    <div>
+      <h2>¡Gracias por visitarnos!</h2>
+    </div>
+  );
 }
 
 export default Logout;

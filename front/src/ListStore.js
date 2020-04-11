@@ -14,8 +14,7 @@ render()
 
     <li key={shop.id} className='card shop-list-item'>
 
-    <img className='card-img-top shop-avatar' src={shop.imageURL}>
-    </img>
+    <img className='card-img-top shop-avatar' src={shop.imageURL}/>
 
 
     <div className='card-body shop-details'>

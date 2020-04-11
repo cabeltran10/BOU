@@ -7,14 +7,14 @@ import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./index.css";
 import FormPayment from "./forms/FormPayment";
+import Scan from "./Scan";
 
 function App(props) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   useEffect(() => {
     fetch("/getUser")
       .then((res) => res.json())
       .then((user) => setUser(user));
-    // console.log(ePayco);
   }, [user]);
 
   return (
@@ -38,7 +38,8 @@ function App(props) {
           <Route
             path="/payment"
             component={() => <FormPayment user={user} />}
-          ></Route>
+          />
+          <Route path="/:nombre" component={Scan} />
         </Switch>
       </div>
     </Router>

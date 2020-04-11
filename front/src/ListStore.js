@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Link, Switch, Route } from "react-router-dom";
 
 import ShoppingCart from "./ShoppingCart";
 
@@ -50,34 +50,23 @@ function ListStore(props) {
     setproducts(list);
   };
   return (
-    <Router>
-      <div>
-        <h1>Selecciona la tienda</h1>
-        <ul className="shop-list">
-          {props.shops.map((shop) => (
-            <li key={shop.id} className="card shop-list-item">
-              <img className="card-img-top shop-avatar" src={shop.imageURL} />
+        <div>
+          <h1>Selecciona la tienda</h1>
+          <ul className="shop-list">
+            {props.shops.map((shop) => (
+              <li key={shop.id} className="card shop-list-item">
+                <img className="card-img-top shop-avatar" src={shop.imageURL} />
 
-              <div className="card-body shop-details">
-                <h3 className="card-title">{shop.name} </h3>
-                <Switch>
-                  <Route
-                    exact
-                    path={"/" + shop.name}
-                    component={() => (
-                      <ShoppingCart products={productsnew} onDelete={remove} />
-                    )}
-                  ></Route>
-                </Switch>
-                <Link to={"/" + shop.name}>
-                  <button className="shop-go">Comprar</button>
-                </Link>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Router>
+                <div className="card-body shop-details">
+                  <h3 className="card-title">{shop.name} </h3>
+                  <Link to={`/${shop.name}`}>
+                    <button className="shop-go">Comprar</button>
+                  </Link>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
   );
 }
 

@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device_width, initial_scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384_Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:500|Roboto:500&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
 
@@ -16,29 +19,29 @@
         <h1>Login</h1>
         <form action="/login" method="POST">
           <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username">Nombre de usuario</label>
             <input class="form-control" type="text" name="username" id="username">
           </div>
           <div class="form_group">
-            <label for="password">Password</label>
+            <label for="password">Contraseña</label>
             <input type="password" name="password" id="password" class="form-control">
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className='shop-go'>Enviar</button>
         </form>
       </div>
       <div class="col-sm">
         <h1>Register</h1>
         <form action="/register" method="POST">
           <div class="form-group">
-            <label for="username_register">Username</label>
+            <label for="username_register">Nombre de usuario</label>
             <input class="form-control" type="text" name="usernameRegister" id="usernameRegister" required>
           </div>
           <div class="form-group">
-            <label for="password_register">Password</label>
+            <label for="password_register">Contraseña</label>
             <input type="password" name="passwordRegister" id="passwordRegister" class="form-control" required>
           </div>
           <div class="form-group">
-            <label for="password2_register">Repeat Password</label>
+            <label for="password2_register">Repetir Contraseña</label>
             <input type="password" name="password2Register" id="password2Register" class="form-control" required>
           </div>
           <div class="form-group">
@@ -53,12 +56,12 @@
             <label for="email_register">Correo</label>
             <input type="email" name="emailRegister" id="emailRegister" class="form-control" required>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit">Enviar</button>
         </form>
       </div>
     </div>
   </div>
-  <a href="../../logout">Logout</button>
+  <a href="../../logout">Cerrar sesion</button>
 
 </body>
 

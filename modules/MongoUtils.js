@@ -61,6 +61,32 @@ function MongoUtils() {
     });
   };
 
+  mu.shops={};
+  mu.shops.findShop=(shopname) =>{
+
+     return mu.connect().then((client) => {
+      const shops = client.db(DB_NAME).collection("shops");
+      const query = { shopname };
+
+      return shops
+        .findOne(query)
+        .then((user, err) => {
+          cb(err, user);
+        })
+        .finally(() => client.close());
+    });
+
+  }
+
+
+  mu.products.findproduct=(shopname, id) =>{
+
+    const  shop= mu.shops.findShop(shopname);
+    let found = shop.products.find(element => element.id ===id )
+    return found;
+
+  }
+
   return mu;
 }
 

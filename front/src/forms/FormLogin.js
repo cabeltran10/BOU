@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 function FormLogin(props) {
   return (
-    <div className="container">
-    <h2>Inicia sesión</h2>
+    <div>
+      <h2>Inicia sesión</h2>
       <form method="POST" action="/login">
         <div className="form-group">
           <label htmlFor="username">Nombre de usuario</label>
@@ -25,15 +25,13 @@ function FormLogin(props) {
             required
           />
         </div>
-
       </form>
-       <button type="submit" className="shop-go">Entrar</button>
+      <button type="submit" className="shop-go">
+        Entrar
+      </button>
 
       <div>
-        <Link to="/register">
-          ¿No eres un miembro? Registrate
-        </Link>
-       
+        <Link to="/register">¿No eres un miembro? Registrate</Link>
       </div>
     </div>
   );

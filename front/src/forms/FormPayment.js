@@ -19,7 +19,6 @@ function FormPayment(props) {
   };
 
   const cameraQR = () => {
-
     return (
       <div>
         <QrReader
@@ -62,7 +61,7 @@ function FormPayment(props) {
       </form>
       <div>
         <button onClick={() => setCamera(!camera)}>Leer QR</button>
-        {!camera? <div></div>: cameraQR()}
+        {!camera ? <div></div> : cameraQR()}
       </div>
     </div>
   );

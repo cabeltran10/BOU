@@ -33,31 +33,32 @@ function FormPayment(props) {
 
   return (
     <div>
+    <h2>Detalles de forma de pago</h2>
       <form method="POST" id="customer-form">
         <span className="card-errors"></span>
         <div className="form-group">
-          <label>Nombre del usuario de tarjeta</label>
+          <label className="label-input">Nombre del usuario de tarjeta</label>
           <input type="text" />
         </div>
         <div className="form-group">
-          <label>Email</label>
+          <label className="label-input">Email</label>
           <input type="text" />
         </div>
         <div className="form-group">
-          <label>Número de tarjeta de crédito</label>
+          <label className="label-input">Número de tarjeta de crédito</label>
           <input type="text" />
         </div>
         <div className="form-group">
-          <label>CVC</label>
+          <label className="label-input">CVC</label>
           <input type="text" size="4" />
         </div>
         <div className="form-group">
-          <label>Mes de expiración(MM)</label>
+          <label className="label-input">Mes de expiración(MM)</label>
           <input type="text" />
-          <span>Año de expiración(AAAA)</span>
+          <span className="label-input" >Año de expiración(AAAA)</span>
           <input type="text" />
         </div>
-        <button type="submit">¡Pagar ahora!</button>
+        <button type="submit" className="shop-go">¡Pagar ahora!</button>
       </form>
       <div>
         <button onClick={() => setCamera(!camera)}>Leer QR</button>

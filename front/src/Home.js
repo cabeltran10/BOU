@@ -27,7 +27,7 @@ const products = [
     name: "Karen Isgrigg",
     price: "400",
     imageURL: "http://localhost:5001/karen.jpg",
-    quantity: 1,
+    quantity: "1",
   },
   {
     id: "238470",

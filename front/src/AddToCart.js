@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -8,6 +8,7 @@ AddToCart.propTypes = {
 };
 
 function AddToCart(props) {
+  const butAgregar = useRef();
   const match = window.location.pathname.split("/");
   const [item, setItem] = useState({});
   useEffect(() => {
@@ -17,8 +18,17 @@ function AddToCart(props) {
     const url = `/shop/${match[1]}/item/${match[2]}`;
     console.log(url);
     const res = await fetch(url);
-    const tempItem = await res.json();
-    setItem(tempItem);
+    let newItem = await res.json();
+    let products = props.car.products;
+    for(let product of products){
+      console.log("producto:",product);
+      if(product.id===newItem.id){
+        newItem= { id: " ", name: "Item ya agregado! Ve a pagar", price:"" }
+        break;
+      }
+    }
+    
+    setItem(newItem);
   };
 
   const addCar = () => {
@@ -30,11 +40,8 @@ function AddToCart(props) {
     temp.products.push(item);
     props.editCar(temp);
     console.log("Despues de agregar", props.car);
-    setItem({ id: " ", name: "Agregado!", price: "" });
-    let but = document.querySelector(".shop-go");
-    console.log(but);
-    if (!item) but.setAttribute("disabled", "true");
-    console.log(item.imageURL);
+    setItem({ id: " ", name: "Agregado!", price:"" });
+    butAgregar.current.setAttribute("disabled", "true");
   };
 
   const render = () => {
@@ -64,7 +71,7 @@ function AddToCart(props) {
                   </div>
 
                   <div className="price-tag">
-                    <p>{"$" + item.price}</p>
+                    <p>{item.price? "$" + item.price: ""}</p>
                   </div>
                 </div>
               </div>
@@ -73,6 +80,7 @@ function AddToCart(props) {
               <button
                 className="shop-go justify-content-center"
                 onClick={addCar}
+                ref={butAgregar}
               >
                 Agregar
               </button>

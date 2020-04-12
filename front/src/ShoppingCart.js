@@ -40,7 +40,7 @@ function ShoppingCart(props) {
 
   let minusQuantity = (item) => {
     if (item.quantity === 0) {
-      console.log(butMinus.current.setAttribute("disabled", "true"));
+      butMinus.current.setAttribute("disabled", "true");
     } else {
       item.quantity = item.quantity - 1;
       let newCar = props.car;

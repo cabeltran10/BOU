@@ -9,16 +9,17 @@ import "./index.css";
 import ShoppingCart from "./ShoppingCart";
 import Scan from "./Scan";
 import AddToCart from "./AddToCart";
+import FormPayment from "./forms/FormPayment";
 
 function App(props) {
-  const [car, setCar] = useState({products: []});
+  const [car, setCar] = useState({ products: [] });
   const [user, setUser] = useState({});
   const [shops, setShops] = useState([]);
   useEffect(() => {
     fetch("/getUser")
       .then((res) => res.json())
       .then((user) => setUser(user));
-    console.log("this is the user",user);
+    console.log("this is the user", user);
   }, []);
 
   useEffect(() => {
@@ -30,11 +31,11 @@ function App(props) {
     const temp = await res.json();
     console.log(temp);
     setShops(temp);
-  }
+  };
 
   const editCar = (newCar) => {
     setCar(newCar);
-  }
+  };
   return (
     <Router>
       <div>
@@ -71,9 +72,11 @@ function App(props) {
             />
             <Route
               exact
-              path="/:id"
-              component={() => <Scan />}
+              path="/pay"
+              component={() => <FormPayment user={user} car={car} />}
             />
+
+            <Route exact path="/:id" component={() => <Scan />} />
           </Switch>
         </div>
       </div>

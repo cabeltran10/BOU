@@ -9,23 +9,34 @@ router.get("/login", function (req, res) {
   res.redirect("/");
 });
 
+router.post("/pago/:shopId", (req, res) => {
+  console.log("Detalles del pago", req.body);
+  const factura = req.body;
+  for (let prop in req.body) {
+    factura[prop] = req.body[prop];
+  }
+  const query = factura;
+  const shopId = req.url.split("/")[2];
+  mongo.shops.facturar(query, shopId).then(res.redirect("/"));
+});
+
 router.get("/shops", (req, res) => {
   // metodo mongo utils
   console.log("llega a shops");
-  mongo.shops.findAll()
-    .then( shops => {
-      console.log(shops);
-      res.json(shops);      
-    });
+  mongo.shops.findAll().then((shops) => {
+    console.log(shops);
+    res.json(shops);
+  });
 });
 
 router.get("/shop/:shopId/item/:productId", (req, res) => {
+  console.log("llega a shops/products");
   console.log(req.params);
   mongo.shops
     .findProductInShop(req.params.shopId, parseInt(req.params.productId))
     .then((product) => {
       console.log(product);
-      if(product) res.json(product);
+      if (product) res.json(product);
       else res.json({});
     });
 });
@@ -40,9 +51,9 @@ router.post(
 );
 
 router.get("/getUser", function (req, res) {
-  console.log("req.user",req.user);
+  console.log("req.user", req.user);
   const message = {};
-  if(req.user) res.json(req.user); 
+  if (req.user) res.json(req.user);
   else res.json(message);
 });
 

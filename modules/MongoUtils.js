@@ -65,13 +65,24 @@ function MongoUtils() {
 
   mu.shops = {};
 
-  mu.shops.findAll = (shopId) => {
+  mu.shops.facturar = (query, shopId) => {
+    return mu.connect().then(client => {
+      const facturas = client.db(DB_NAME).collection("facturas");
+      query.id_shop = shopId;
+      console.log(query);
+      return facturas.insertOne(query).finally(() => client.close());
+    });
+  };
 
+  mu.shops.findAll = (shopId) => {
     return mu.connect().then((client) => {
       const shops = client.db(DB_NAME).collection("shops");
       const query = {};
 
-      return shops.find(query).toArray().finally(() => client.close());
+      return shops
+        .find(query)
+        .toArray()
+        .finally(() => client.close());
     });
   };
 
@@ -84,12 +95,13 @@ function MongoUtils() {
         .findOne(query)
         .then((shop) => {
           console.log(shop);
-          for (let product of shop.products) {
-            console.log(productId);
-            if (product.id === productId) {
-              return product;
+          if (shop)
+            for (let product of shop.products) {
+              console.log(productId);
+              if (product.id === productId) {
+                return product;
+              }
             }
-          }
           return null;
         })
         .finally(() => client.close());

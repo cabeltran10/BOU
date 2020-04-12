@@ -74,72 +74,79 @@ function ShoppingCart(props) {
   return (
     <div>
       <div className="container add col-md-12">
-      <div className="text justify-content-center col-md-12">
-      <h1>Resumen de productos</h1>
-      </div>
+        <div className="text justify-content-center col-md-12">
+          <h1>Resumen de productos</h1>
+        </div>
 
-      <div className="card product-list">
-        {props.car.products.map((item) => (
-          <div className="col-md-12">
-          <div key={item.id} className="product-list-item col-md-12">
-            <div className="item-image">
-              <img
-                src={item.imageURL}
-                width={100}
-                height={100}
-                alt={item.name}
-              />
-            </div>
+        <div className="card product-list">
+          {props.car.products.map((item) => (
+            <div className="col-md-12">
+              <div key={item.id} className="product-list-item col-md-12">
+                <div className="item-image">
+                  <img
+                    src={item.imageURL}
+                    width={100}
+                    height={100}
+                    alt={item.name}
+                  />
+                </div>
 
-            <div className="item-details">
-              <p className="item-name">{item.name}</p>
-            </div>
-            <div className="row" id="quantity">
-              <button onClick={() => addQuantity(item)} className="item-add">
-                +
-              </button>
+                <div className="item-details">
+                  <p className="item-name">{item.name}</p>
+                </div>
+                <div className="row" id="quantity">
+                  <button
+                    onClick={() => addQuantity(item)}
+                    className="item-add"
+                  >
+                    +
+                  </button>
 
-              <span>{item.quantity}</span>
-              <button
-                onClick={() => minusQuantity(item)}
-                className="item-minus"
-                ref={butMinus}
-              >
-                -
-              </button>
-              <button
-                onClick={() => onClickRemove(item)}
-                className="item-remove"
-              >
-                Remove
-              </button>
+                  <span>{item.quantity}</span>
+                  <button
+                    onClick={() => minusQuantity(item)}
+                    className="item-minus"
+                    ref={butMinus}
+                  >
+                    -
+                  </button>
+                  <button
+                    onClick={() => onClickRemove(item)}
+                    className="item-remove"
+                  >
+                    Remove
+                  </button>
+                </div>
+                <p>${item.price}</p>
+              </div>
             </div>
-            <p>${item.price}</p>
+          ))}
+        </div>
+
+        <div className="total row justify-content-center">
+          <h2>Total</h2>
+          <div>
+            <p>${total}</p>
           </div>
-          </div>
-        ))}
-      </div>
-
-
-      <div className="total row justify-content-center">
-        <h2>Total</h2>
-        <div>
-        <p>${total}</p>
+        </div>
+        <div className="row justify-content-center">
+          {props.car.shop ? (
+            <Link to={`/${props.car.shop}`}>
+              {" "}
+              <button className="shop-goto justify-content-center">
+                Volver
+              </button>
+            </Link>
+          ) : (
+            "No hay tienda"
+          )}
+        </div>
+        <div className="row justify-content-center">
+          <Link to="/pay">
+            <button className="shop-go justify-content-center">Pagar</button>
+          </Link>
         </div>
       </div>
-      <div className="row justify-content-center">
-
-        {props.car.shop ? (
-          <Link to={`/${props.car.shop}`}> <button className="shop-goto justify-content-center">Volver</button></Link>
-        ) : (
-          "No hay tienda"
-        )}
-
-      </div>
-      <div className="row justify-content-center">
-      <button className="shop-go justify-content-center">Pagar</button>
-      </div>
-    </div>
     </div>
   );
 }

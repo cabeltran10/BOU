@@ -58,73 +58,78 @@ function ShoppingCart(props) {
     }
   };
 
-  let onClickremove = (item) => {
+  let onClickRemove = (item) => {
     setTotal(total - item.price * item.quantity);
-
-    props.setCar(item.quantity + 1);
-    props.onDelete(item.id);
+    let newCar = props.car;
+    let products = newCar.products;
+    for (let i = 0; i < products.length; i++) {
+      if (item.id === products[i].id) {
+        newCar.products.splice(i, 1);
+        break;
+      }
+    }
+    props.editCar(newCar);
   };
 
   return (
     <div>
       <div className="container add">
-      <div className="text justify-content-center">
-      <h1>Resumen de productos</h1>
-</div>
-      <div className="card product-list">
-        {props.car.products.map((item) => (
-          <div key={item.id} className="product-list-item">
-            <div className="item-image">
-              <img
-                src={item.imageURL}
-                width={100}
-                height={100}
-                alt={item.name}
-              />
-            </div>
+        <div className="text justify-content-center">
+          <h1>Resumen de productos</h1>
+        </div>
+        <div className="card product-list">
+          {props.car.products.map((item) => (
+            <div key={item.id} className="product-list-item">
+              <div className="item-image">
+                <img
+                  src={item.imageURL}
+                  width={100}
+                  height={100}
+                  alt={item.name}
+                />
+              </div>
 
-            <div className="item-details">
-              <p className="item-name">{item.name}</p>
-            </div>
-            <div className="row" id="quantity">
-              <button onClick={() => addQuantity(item)} className="item-add">
-                +
-              </button>
+              <div className="item-details">
+                <p className="item-name">{item.name}</p>
+              </div>
+              <div className="row" id="quantity">
+                <button onClick={() => addQuantity(item)} className="item-add">
+                  +
+                </button>
 
-              <span>{item.quantity}</span>
-              <button
-                onClick={() => minusQuantity(item)}
-                className="item-minus"
-                ref={butMinus}
-              >
-                -
-              </button>
-              <button
-                onClick={() => onClickremove(item)}
-                className="item-remove"
-              >
-                Remove
-              </button>
+                <span>{item.quantity}</span>
+                <button
+                  onClick={() => minusQuantity(item)}
+                  className="item-minus"
+                  ref={butMinus}
+                >
+                  -
+                </button>
+                <button
+                  onClick={() => onClickRemove(item)}
+                  className="item-remove"
+                >
+                  Remove
+                </button>
+              </div>
+              <p>${item.price}</p>
             </div>
-            <p>${item.price}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <div className="total row">
-        <h2>Total</h2>
-        <p>${total}</p>
-      </div>
-      <div>
-        {props.car.shop ? (
-          <Link to={`/${props.car.shop}`}>Comprar Más!</Link>
-        ) : (
-          "No hay tienda"
-        )}
+        <div className="total row">
+          <h2>Total</h2>
+          <p>${total}</p>
+        </div>
+        <div>
+          {props.car.shop ? (
+            <Link to={`/${props.car.shop}`}>Comprar Más!</Link>
+          ) : (
+            "No hay tienda"
+          )}
+        </div>
       </div>
     </div>
-    </div>
-
   );
 }
 

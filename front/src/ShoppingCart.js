@@ -115,7 +115,7 @@ function ShoppingCart(props) {
       </div>
       <div>
         {props.car.shop ? (
-          <Link to={`/${props.car.shop}`}>Comprar!</Link>
+          <Link to={`/${props.car.shop}`}>Comprar Más!</Link>
         ) : (
           "No hay tienda"
         )}

@@ -17,7 +17,7 @@ function FormLogin(props) {
           <div class="card-body p-0">
    
             <div class="row">
-             <div class="col-lg-6 d-none d-lg-block bg-login-image" id="bg-login-image" > <img  alt="Prendas de vestir"></img></div>
+             <div class="col-lg-6 d-none d-lg-block bg-login-image" id="bg-login-image" > <img width="450" height="600" src="https://user-images.githubusercontent.com/26877363/79059180-9ea95180-7c3c-11ea-9408-02121b258842.jpg" alt="Prendas de vestir"></img></div>
              
              <div class="col-lg-6">
                 <div class="p-5">

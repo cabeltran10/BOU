@@ -1,6 +1,6 @@
 import React from "react";
 
-import logo from "./img/bou.svg";
+import logo from "./img/bou.png";
 import user from "./img/user.svg";
 import cart from "./img/cart.png";
 import logout from "./img/logout.png";
@@ -14,7 +14,7 @@ function Navbar(props) {
           to="/"
           className="navbar-brand"
           href="/"
-        ><img src={logo}/></Link>
+        ><img src={logo} /></Link>
         <div className="navbar-nav ml-auto">
           <Link className="cartimg" to="/payment">
             <img alt="Go to pay" src={cart} width="30" height="30" />

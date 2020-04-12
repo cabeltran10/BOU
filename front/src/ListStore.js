@@ -19,14 +19,14 @@ function ListStore(props) {
           <div class="card-body p-0">
    
             <div class="row">
-             <div class="col-lg-6 d-none d-lg-block bg-login-image" id="bg-login-image" > <img  alt="Prendas de vestir"></img></div>
+           
              
-             <div class="col-lg-6">
+             <div class="col-lg-12">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Inicie su sesión</h1>
+                    <h1 class="h4 text-gray-900 mb-4">¿En qué tienda estás?</h1>
                   </div>
-      <h1>Selecciona la tienda</h1>
+     
       <ul className="shop-list">
         {props.shops.map((shop) => (
           <li key={shop._id} className="card shop-list-item">

@@ -22,14 +22,14 @@
             <div class="card-body p-0">
      
               <div class="row">
-               <div class="col-lg-6 d-none d-lg-block bg-login-image" id="bg-login-image" > <img alt="Prendas de vestir"></img></div>
+               <div class="col-lg-6 d-none d-lg-block bg-login-image" id="bg-login-image" > <img  width="450" height="740" src="https://user-images.githubusercontent.com/26877363/79059153-6ace2c00-7c3c-11ea-923f-9ba0cc1e7a50.jpg" alt="Prendas de vestir"></img></div>
                
                <div class="col-lg-6">
                   <div class="p-5">
                     <div class="text-center">
                       <h1 class="h4 text-gray-900 mb-4">Regístrate</h1>
                     </div>
-                    
+
         <form method="POST" onSubmit={fetching}>
           <div className="form-group">
             <label className="label-input"  htmlFor="username">

@@ -5,7 +5,28 @@ function ListStore(props) {
   
   return (
     <div>
-      <h1>Selecciona la tienda</h1>
+        <div className="container">
+    <div class="bg-gradient-primary">
+
+  <div class="container">
+
+
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+   
+            <div class="row">
+           
+             
+             <div class="col-lg-12">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">¿En qué tienda estás?</h1>
+                  </div>
+     
       <ul className="shop-list">
         {props.shops.map((shop) => (
           <li key={shop._id} className="card shop-list-item">
@@ -20,6 +41,17 @@ function ListStore(props) {
         ))}
       </ul>
     </div>
+
+      </div>
+        </div>
+          </div>
+            </div>
+              </div>
+                </div>
+                  </div>
+                    </div>
+                      </div>
+                        </div>
   );
 }
 

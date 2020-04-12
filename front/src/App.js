@@ -11,6 +11,7 @@ import Scan from "./Scan";
 import AddToCart from "./AddToCart";
 
 function App(props) {
+  const [car, setCar] = useState([]);
   const [user, setUser] = useState({});
   const [shops, setShops] = useState([]);
   useEffect(() => {
@@ -36,7 +37,13 @@ function App(props) {
         <Navbar setUser={setUser} user={user}></Navbar>
         <div className="container">
           <Switch>
-            <Route path="/" exact component={() => <Home user={user} shops={shops} setShops={setShops}/>} />
+            <Route
+              path="/"
+              exact
+              component={() => (
+                <Home user={user} shops={shops} setShops={setShops} />
+              )}
+            />
             <Route
               path="/login"
               component={() => <FormLogin user={user} setUser={setUser} />}
@@ -53,7 +60,11 @@ function App(props) {
               path="/payment"
               component={() => <FormPayment user={user} />}
             />
-            <Route exact path="/:id/:productId" component={AddToCart} />
+            <Route
+              exact
+              path="/:id/:productId"
+              component={() => <AddToCart setCar={setCar} car={car} />}
+            />
             <Route exact path="/:id" component={Scan} />
           </Switch>
         </div>

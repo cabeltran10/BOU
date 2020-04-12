@@ -59,7 +59,7 @@ router.get("/getUser", function (req, res) {
 
 router.get("/logout", function (req, res) {
   req.logout();
-  res.redirect("/");
+  res.redirect("/logout");
 });
 
 router.get("/profile", function (req, res) {

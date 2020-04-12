@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import QrReader from "react-qr-reader";
 import { Link } from "react-router-dom";
-function Scan(props) {
+function Scan() {
   const [url, setUrl] = useState("");
   const handleError = (err) => {
     console.log(err);

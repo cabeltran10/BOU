@@ -44,6 +44,8 @@ function AddToCart(props) {
         <span className="sr-only">Loading...</span>
       </div>
     ) : (
+     
+      <div className="bg-gradient-primary">
       <div className="col-md-12">
         <div className="card add">
           <div className="card-head">
@@ -80,20 +82,21 @@ function AddToCart(props) {
           </div>
         </div>
       </div>
+      </div>
     );
   };
   return (
     <div className="container add-cart">
       {render()}
-      <div className="row">
+      <div className="row justify-content-center">
         <Link to={"/" + match[1]}>
-          <button className="shop-goto">Volver</button>
+          <button className="shop-goto justify-content-center">Volver</button>
         </Link>
       </div>
 
       <div className="row justify-content-center">
         <Link to="/payment">
-          <button className="shop-go">Pagar</button>
+          <button className="shop-go justify-content-center">Pagar</button>
         </Link>
       </div>
       <div className="row">

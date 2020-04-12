@@ -40,8 +40,8 @@ function AddToCart(props) {
     temp.products.push(item);
     props.editCar(temp);
     console.log("Despues de agregar", props.car);
-    setItem({ id: " ", name: "Agregado!", price:"" });
     butAgregar.current.setAttribute("disabled", "true");
+    butAgregar.current.textContent="Agregado";
   };
 
   const render = () => {
@@ -107,13 +107,7 @@ function AddToCart(props) {
           <button className="shop-go justify-content-center">Pagar</button>
         </Link>
       </div>
-      <div className="row">
-        <ul>
-          {props.car.products.map((c) => (
-            <li key={c.id}>{c.name}</li>
-          ))}
-        </ul>
-      </div>
+
     </div>
   );
 }

@@ -65,8 +65,10 @@ function ShoppingCart(props) {
 
   return (
     <div>
+      <div className="container add">
+      <div className="text justify-content-center">
       <h1>Resumen de productos</h1>
-
+</div>
       <div className="card product-list">
         {props.car.products.map((item) => (
           <div key={item.id} className="product-list-item">
@@ -112,6 +114,8 @@ function ShoppingCart(props) {
         <p>${total}</p>
       </div>
     </div>
+    </div>
+
   );
 }
 

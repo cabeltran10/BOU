@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import AddToCart from "./AddToCart";
+import PropTypes from "prop-types";
 
-
-const item = {
-  id: "91823",
-  name: "Karen Isgrigg",
-  price: "400",
-  imageURL: "http://localhost:5001/karen.jpg",
-  description: "Ropitalindanuevapahueler",
+ShoppingCart.propTypes = {
+  editCar: PropTypes.func.isRequired,
+  car: PropTypes.object.isRequired,
 };
 
 function ShoppingCart(props) {
@@ -16,16 +13,25 @@ function ShoppingCart(props) {
   };
 
   const [total, setTotal] = useState(0);
-  const [quantity, setQuantity] = useState(1);
 
   let onClickTotal = (item) => {
+    item.quantity = item.quantity+1;
+    let newCar = props.car;
+    let products = newCar.products;
+    for(let i=0; i<products.length; i++){
+      if(item===products[i]){
+        newCar[i] = item;
+        break;
+      }
+    }
+    props.editCar(newCar);
     setTotal(total + item.price * item.quantity);
-    setQuantity(item.quantity + 1);
   };
 
   let onClickremove = (item) => {
     setTotal(total - item.price * item.quantity);
-    setQuantity((item.quantity = 0));
+    
+    props.setCar(item.quantity + 1);
     props.onDelete(item.id);
   };
 
@@ -34,33 +40,26 @@ function ShoppingCart(props) {
       <h1>Resumen de productos</h1>
 
       <div className="card product-list">
-        {props.products.map((item) => (
-          <div className="container">
-            <div key={item.id} className="product-list-item">
-              <div
-                className="item-image"
-                style={{ backgroundImage: `url(${item.imageURL})` }}
-              ></div>
-
-              <div className="item-details">
-                <p className="item-name">{item.name}</p>
-              </div>
-
-              <button onClick={() => onClickTotal(item)} className="item-add">
-                +
-              </button>
-              <span>{item.quantity}</span>
-
-              <button
-                onClick={() => onClickremove(item)}
-                className="item-remove"
-              >
-                Remove
-              </button>
-
-              <p>${item.price}</p>
-
+        {props.car.products.map((item) => (
+          <div key={item.id} className="product-list-item">
+            <div className="item-image">
+              <img src={item.imageURL} width={100} height={100} alt={item.name}/>
             </div>
+
+            <div className="item-details">
+              <p className="item-name">{item.name}</p>
+            </div>
+
+            <button onClick={() => onClickTotal(item)} className="item-add">
+              +
+            </button>
+            <span>{item.quantity}</span>
+
+            <button onClick={() => onClickremove(item)} className="item-remove">
+              Remove
+            </button>
+
+            <p>${item.price}</p>
           </div>
         ))}
       </div>
@@ -69,7 +68,6 @@ function ShoppingCart(props) {
         <h2>Total</h2>
         <p>${total}</p>
       </div>
-      <AddToCart item={item} />
     </div>
   );
 }

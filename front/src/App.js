@@ -6,7 +6,7 @@ import Logout from "./Logout";
 import Home from "./Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./index.css";
-import FormPayment from "./forms/FormPayment";
+import ShoppingCart from "./ShoppingCart";
 import Scan from "./Scan";
 import AddToCart from "./AddToCart";
 
@@ -62,7 +62,7 @@ function App(props) {
             />
             <Route
               path="/payment"
-              component={() => <FormPayment user={user} />}
+              component={() => <ShoppingCart car={car} editCar={editCar} />}
             />
             <Route
               exact

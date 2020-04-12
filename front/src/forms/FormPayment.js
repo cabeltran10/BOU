@@ -1,9 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
-
-FormPayment.propTypes = {
-  user: PropTypes.object.isRequired
-};
 
 function FormPayment() {
   return (

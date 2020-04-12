@@ -21,10 +21,6 @@ function AddToCart(props) {
     setItem(tempItem);
   };
 
-  useEffect(() => {
-    // renderCar();
-  }, [props.car]);
-
   const addCar = () => {
     console.log("Intenta agreagar al carrito");
     let temp = props.car;
@@ -34,19 +30,24 @@ function AddToCart(props) {
     temp.products.push(item);
     props.editCar(temp);
     console.log("Despues de agregar", props.car);
-    setItem({});
+    setItem({id: " ", name: "Agregado!", price: ""});
     let but = document.querySelector(".shop-go");
     console.log(but);
-    if(!item) but.setAttribute("disabled", "true");
+    if (!item) but.setAttribute("disabled", "true");
+    console.log(item.imageURL);
   };
 
-  return (
-    <div className="container add-cart">
+  const render = () => {
+    console.log("cargando",item);
+    return !item.id? (
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    ) : (
       <div className="card add">
-        <div
-          className="row align-items-start"
-          style={{ backgroundImage: `url(${item.imageURL})` }}
-        ></div>
+        <div className="row align-items-start">
+          <img src={item.imageURL} />
+        </div>
 
         <div className="row">
           <div className="col-md">
@@ -59,7 +60,7 @@ function AddToCart(props) {
             </div>
 
             <div className="price-tag">
-              <p>${item.price}</p>
+              <p>{"$" + item.price}</p>
             </div>
           </div>
 
@@ -70,9 +71,17 @@ function AddToCart(props) {
           </div>
         </div>
       </div>
+    );
+  };
+  return (
+    <div className="container add-cart">
+      {render()}
       <div className="row">
         <Link to={"/" + match[1]}>
           <button>Comprar Mas!</button>
+        </Link>
+        <Link to="/payment">
+          <button>Pagar</button>
         </Link>
       </div>
       <div className="row">

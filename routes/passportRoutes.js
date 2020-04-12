@@ -25,7 +25,8 @@ router.get("/shop/:shopId/item/:productId", (req, res) => {
     .findProductInShop(req.params.shopId, parseInt(req.params.productId))
     .then((product) => {
       console.log(product);
-      res.json(product);
+      if(product) res.json(product);
+      else res.json({});
     });
 });
 

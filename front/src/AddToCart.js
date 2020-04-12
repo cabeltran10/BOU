@@ -20,14 +20,15 @@ function AddToCart(props) {
     const res = await fetch(url);
     let newItem = await res.json();
     let products = props.car.products;
-    for(let product of products){
-      console.log("producto:",product);
-      if(product.id===newItem.id){
-        newItem= { id: " ", name: "Item ya agregado! Ve a pagar", price:"" }
+    for (let product of products) {
+      console.log("producto:", product);
+      if (product.id === newItem.id) {
+        newItem = { id: " ", name: "Item ya agregado! Ve a pagar", price: "" };
+
         break;
       }
     }
-    
+    props.car.shop = match[1];
     setItem(newItem);
   };
 
@@ -40,7 +41,7 @@ function AddToCart(props) {
     temp.products.push(item);
     props.editCar(temp);
     console.log("Despues de agregar", props.car);
-    setItem({ id: " ", name: "Agregado!", price:"" });
+    setItem({ id: " ", name: "Agregado!", price: "" });
     butAgregar.current.setAttribute("disabled", "true");
   };
 
@@ -71,7 +72,7 @@ function AddToCart(props) {
                   </div>
 
                   <div className="price-tag">
-                    <p>{item.price? "$" + item.price: ""}</p>
+                    <p>{item.price ? "$" + item.price : ""}</p>
                   </div>
                 </div>
               </div>

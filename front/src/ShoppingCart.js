@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 ShoppingCart.propTypes = {
   editCar: PropTypes.func.isRequired,
   car: PropTypes.object.isRequired,
 };
-
 function ShoppingCart(props) {
+  console.log("piiiiing", props.car.shop);
+
   const butMinus = useRef();
   let getTotal = () => {
     let newTotal = 0;
@@ -107,9 +109,16 @@ function ShoppingCart(props) {
         ))}
       </div>
 
-      <div className="total">
+      <div className="total row">
         <h2>Total</h2>
         <p>${total}</p>
+      </div>
+      <div>
+        {props.car.shop ? (
+          <Link to={`/${props.car.shop}`}>Comprar!</Link>
+        ) : (
+          "No hay tienda"
+        )}
       </div>
     </div>
   );

@@ -44,43 +44,38 @@ function AddToCart(props) {
         <span className="sr-only">Loading...</span>
       </div>
     ) : (
-      <div className="card add">
-        <div className="row align-items-start">
-          <img src={item.imageURL} />
-        </div>
-        <div className="col-md-12">
-          <div className="card add">
-            <div className="card-head">
-              <img
-                className="card-img-top justify-content-center"
-                alt="detalle prenda elegida"
-                src="https://user-images.githubusercontent.com/26877363/79073801-254a4700-7cae-11ea-9c51-fe30bc8c16b5.jpg"
-              ></img>
-            </div>
-            <div className="card-body">
-              <div className="row">
-                <div className="col-md">
-                  <div className="card-body description">
-                    <h2 className="card-title">{item.name}</h2>
+      <div className="col-md-12">
+        <div className="card add">
+          <div className="card-head">
+            <img
+              className="card-img-top justify-content-center"
+              alt="detalle prenda elegida"
+              src={item.imageURL}
+            ></img>
+          </div>
+          <div className="card-body">
+            <div className="row">
+              <div className="col-md">
+                <div className="card-body description">
+                  <h2 className="card-title">{item.name}</h2>
 
-                    <div className="description">
-                      <p>{item.description}</p>
-                    </div>
+                  <div className="description">
+                    <p>{item.description}</p>
+                  </div>
 
-                    <div className="price-tag">
-                      <p>{"$" + item.price}</p>
-                    </div>
+                  <div className="price-tag">
+                    <p>{"$" + item.price}</p>
                   </div>
                 </div>
               </div>
-              <div className="col-sm-12">
-                <button
-                  className="shop-go justify-content-center"
-                  onClick={addCar}
-                >
-                  Agregar
-                </button>
-              </div>
+            </div>
+            <div className="col-sm-12">
+              <button
+                className="shop-go justify-content-center"
+                onClick={addCar}
+              >
+                Agregar
+              </button>
             </div>
           </div>
         </div>
@@ -94,13 +89,12 @@ function AddToCart(props) {
         <Link to={"/" + match[1]}>
           <button className="shop-goto">Volver</button>
         </Link>
-        <Link to="/payment">
-          <button>Pagar</button>
-        </Link>
       </div>
 
       <div className="row justify-content-center">
-        <button className="shop-go">Pagar</button>
+        <Link to="/payment">
+          <button className="shop-go">Pagar</button>
+        </Link>
       </div>
       <div className="row">
         <ul>

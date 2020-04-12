@@ -11,7 +11,7 @@ import Scan from "./Scan";
 import AddToCart from "./AddToCart";
 
 function App(props) {
-  const [car, setCar] = useState([]);
+  const [car, setCar] = useState({products: []});
   const [user, setUser] = useState({});
   const [shops, setShops] = useState([]);
   useEffect(() => {
@@ -21,16 +21,28 @@ function App(props) {
   }, [user]);
 
   useEffect(() => {
+    console.log("this is my car", car);
+  }, []);
+
+  useEffect(() => {
     fetchShops();
   }, []);
   const fetchShops = async () => {
     const url = "/shops";
     const res = await fetch(url);
-    const shops = await res.json();
-    console.log(shops);
-    setShops(shops);
+    const temp = await res.json();
+    console.log(temp);
+    setShops(temp);
   };
 
+  const editCar = (newCar) => {
+    // setCar(() => {
+    //   Object.assign({}, newCar);
+    // });
+    console.log("Llega a editcat");
+    setCar(newCar);
+    console.log("Nuevo valor", car);
+  }
   return (
     <Router>
       <div>
@@ -63,9 +75,13 @@ function App(props) {
             <Route
               exact
               path="/:id/:productId"
-              component={() => <AddToCart setCar={setCar} car={car} />}
+              component={() => <AddToCart editCar={editCar} car={car} />}
             />
-            <Route exact path="/:id" component={Scan} />
+            <Route
+              exact
+              path="/:id"
+              component={() => <Scan setCar={setCar} car={car} shops={shops} />}
+            />
           </Switch>
         </div>
       </div>

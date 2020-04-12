@@ -1,23 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import QrReader from "react-qr-reader";
-
-function Scan({ match }) {
+import { Link } from "react-router-dom";
+function Scan(props) {
+  const [url, setUrl] = useState("");
   const handleError = (err) => {
     console.log(err);
   };
   const handleScan = async (productId) => {
+    const match = window.location.pathname.split("/");
     console.log(productId);
     console.log(match);
-    let url = `/${match.params.id}/${productId}`;
+    let url = `/${match[1]}/${productId}`;
     console.log(url);
     if (productId) {
-      alert(url);
-      window.location.href = url;
+      setUrl(url);
+      // window.location.href = url;
     }
   };
 
   return (
     <div>
+      {!url ? "Escanea!" : <Link to={url}>Ir al detalle del producto</Link>}
+
       <QrReader
         delay={300}
         onError={handleError}

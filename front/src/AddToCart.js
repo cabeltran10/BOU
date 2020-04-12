@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+AddToCart.propTypes = {
+  editCar: PropTypes.func.isRequired,
+  car: PropTypes.object.isRequired,
+};
+
 function AddToCart(props) {
   const match = window.location.pathname.split("/");
   const [item, setItem] = useState({});
@@ -22,21 +29,16 @@ function AddToCart(props) {
     console.log("Intenta agreagar al carrito");
     let temp = props.car;
     console.log(temp);
-    console.log(item);
-    temp.push(item);
-    props.setCar(temp);
+    console.log("item", item);
+    console.log("Item adentro" + item);
+    temp.products.push(item);
+    props.editCar(temp);
     console.log("Despues de agregar", props.car);
-    // renderCar(props.car);
+    setItem({});
+    let but = document.querySelector(".shop-go");
+    console.log(but);
+    if(!item) but.setAttribute("disabled", "true");
   };
-
-  // const renderCar = () => {
-  //   console.log("In render car", props.car.length);
-  //   if (props.car.length !== 0)
-  //     return (
-
-  //     );
-  //   return ;
-  // };
 
   return (
     <div className="container add-cart">
@@ -74,9 +76,11 @@ function AddToCart(props) {
         </Link>
       </div>
       <div className="row">
-        {props.car.map((c) => (
-          <div key={c.id}>{c.name}</div>
-        ))}
+        <ul>
+          {props.car.products.map((c) => (
+            <li key={c.id}>{c.name}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );

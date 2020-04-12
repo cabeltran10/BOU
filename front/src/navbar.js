@@ -16,12 +16,12 @@ function Navbar(props) {
           href="/"
         ><img src={logo}/></Link>
         <div className="navbar-nav ml-auto">
-          <Link to="/payment">
-            <img alt="Go to pay" src={cart} width="40" height="40" />
+          <Link className="cartimg" to="/payment">
+            <img alt="Go to pay" src={cart} width="30" height="30" />
           </Link>
           {!props.user ? (
-            <Link to="/login">
-              <img src={user} alt="login" width="40" height="40" />
+            <Link className="cartimg" to="/login">
+              <img src={user} alt="login" width="25" height="25"/>
             </Link>
           ) : (
             <label

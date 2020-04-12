@@ -16,9 +16,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.container{
-padding-top: 10rem;
-}
+
 
 .store{
 padding-top: 5rem;
@@ -28,6 +26,9 @@ padding-top: 5rem;
 padding-top: 3rem;
 }
 
+.cartimg{
+  padding: 1rem;
+}
 .products-resume{
 padding-top: 1rem;
 }

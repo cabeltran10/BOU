@@ -66,6 +66,7 @@ function MongoUtils() {
   mu.shops = {};
 
   mu.shops.findAll = (shopId) => {
+
     return mu.connect().then((client) => {
       const shops = client.db(DB_NAME).collection("shops");
       const query = {};

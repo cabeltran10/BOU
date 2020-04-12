@@ -30,7 +30,7 @@ function App(props) {
     const temp = await res.json();
     console.log(temp);
     setShops(temp);
-  };
+  }
 
   const editCar = (newCar) => {
     setCar(newCar);

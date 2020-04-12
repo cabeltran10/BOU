@@ -42,17 +42,26 @@ function AddToCart(props) {
 
   return (
     <div className="container add-cart">
-      <div className="card add">
-        <div
-          className="row align-items-start"
-          style={{ backgroundImage: `url(${item.imageURL})` }}
-        ></div>
+      <div className="bg-gradient-primary">
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-xl-10 col-lg-12 col-md-9">
+              <div className="card o-hidden border-0 shadow-lg my-5">
+                <div className="card-body p-0">
+                  <div className="row">
 
+    <div className="col-md-12">
+      <div className="card add">
+       <div className="card-head">
+        <img className="card-img-top justify-content-center" alt="detalle prenda elegida" 
+          src="https://user-images.githubusercontent.com/26877363/79073801-254a4700-7cae-11ea-9c51-fe30bc8c16b5.jpg"
+        ></img>
+        <div className="card-body">
         <div className="row">
           <div className="col-md">
-            <div className="cart-body description">
+            <div className="card-body description">
               <h2 className="card-title">{item.name}</h2>
-            </div>
+            
 
             <div className="description">
               <p>{item.description}</p>
@@ -62,18 +71,37 @@ function AddToCart(props) {
               <p>${item.price}</p>
             </div>
           </div>
+          </div>
 
-          <div className="col-sm">
-            <button className="shop-go" onClick={addCar}>
+          <div className="col-sm-12">
+            <button className="shop-go justify-content-center" onClick={addCar}>
               Agregar
             </button>
           </div>
         </div>
       </div>
-      <div className="row">
+      </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+      <div className="row justify-content-center">
         <Link to={"/" + match[1]}>
-          <button>Comprar Mas!</button>
+          <button className="shop-goto">Volver</button>
         </Link>
+      </div>
+
+       <div className="row justify-content-center">
+      <button className="shop-go">Pagar</button>
+  
       </div>
       <div className="row">
         <ul>

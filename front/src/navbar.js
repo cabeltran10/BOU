@@ -5,8 +5,15 @@ import user from "./img/user.svg";
 import cart from "./img/cart.png";
 import logout from "./img/logout.png";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+Navbar.propTypes = {
+  user: PropTypes.object.isRequired,
+  setUser: PropTypes.func.isRequired
+};
 
 function Navbar(props) {
+  console.log(props.user);
   return (
     <div>
       <nav>
@@ -19,7 +26,7 @@ function Navbar(props) {
           <Link className="cartimg" to="/payment">
             <img alt="Go to pay" src={cart} width="30" height="30" />
           </Link>
-          {!props.user ? (
+          {!props.user.username ? (
             <Link className="cartimg" to="/login">
               <img src={user} alt="login" width="25" height="25"/>
             </Link>

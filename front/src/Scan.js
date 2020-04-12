@@ -14,7 +14,6 @@ function Scan(props) {
     console.log(url);
     if (productId) {
       setUrl(url);
-      // window.location.href = url;
     }
   };
 

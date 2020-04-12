@@ -18,10 +18,7 @@ function App(props) {
     fetch("/getUser")
       .then((res) => res.json())
       .then((user) => setUser(user));
-  }, [user]);
-
-  useEffect(() => {
-    console.log("this is my car", car);
+    console.log("this is the user",user);
   }, []);
 
   useEffect(() => {
@@ -36,12 +33,7 @@ function App(props) {
   };
 
   const editCar = (newCar) => {
-    // setCar(() => {
-    //   Object.assign({}, newCar);
-    // });
-    console.log("Llega a editcat");
     setCar(newCar);
-    console.log("Nuevo valor", car);
   }
   return (
     <Router>
@@ -80,7 +72,7 @@ function App(props) {
             <Route
               exact
               path="/:id"
-              component={() => <Scan setCar={setCar} car={car} shops={shops} />}
+              component={() => <Scan />}
             />
           </Switch>
         </div>

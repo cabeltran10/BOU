@@ -39,8 +39,10 @@ router.post(
 );
 
 router.get("/getUser", function (req, res) {
-  console.log(req.user);
-  res.json(req.user || null);
+  console.log("req.user",req.user);
+  const message = {};
+  if(req.user) res.json(req.user); 
+  else res.json(message);
 });
 
 router.get("/logout", function (req, res) {

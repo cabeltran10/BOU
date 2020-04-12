@@ -1,5 +1,10 @@
   import React from "react";
+  import PropTypes from "prop-types";
 
+  FormRegister.propTypes = {
+    user: PropTypes.object.isRequired,
+    setUser: PropTypes.func.isRequired
+  };
 
   function FormRegister(props) {
     const fetching = async (e) => {

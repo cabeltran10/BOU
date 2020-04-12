@@ -1,5 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
+FormLogin.propTypes = {
+  user: PropTypes.object.isRequired,
+  setUser: PropTypes.func.isRequired
+};
 
 function FormLogin(props) {
   return (
@@ -57,13 +63,16 @@ function FormLogin(props) {
                               required
                             />
                           </div>
+                          <button type="submit" className="shop-go">
+                            Entrar
+                          </button>
                         </form>
-                        <button type="submit" className="shop-go">
-                          Entrar
-                        </button>
-
-                        <div className="register" >
-                          <Link style={{ WebkitTextFillColor: "black" }} className="label-input" to="/register">
+                        <div className="register">
+                          <Link
+                            style={{ WebkitTextFillColor: "black" }}
+                            className="label-input"
+                            to="/register"
+                          >
                             ¿No eres un miembro? Registrate
                           </Link>
                         </div>

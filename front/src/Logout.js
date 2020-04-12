@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 
+Logout.propTypes = {
+  user: PropTypes.object.isRequired,
+  setUser: PropTypes.func.isRequired,
+};
 function Logout(props) {
   fetch("/logout");
   console.log(props);

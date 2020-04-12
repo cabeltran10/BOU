@@ -1,36 +1,11 @@
-import React, { useState } from "react";
-import QrReader from "react-qr-reader";
+import React from "react";
+import PropTypes from "prop-types";
 
-function FormPayment(props) {
-  const [qr, setQr] = useState({});
-  const [camera, setCamera] = useState(false);
+FormPayment.propTypes = {
+  user: PropTypes.object.isRequired
+};
 
-  const handleError = (err) => {
-    console.log(err);
-  };
-
-  const handleScan = (data) => {
-    console.log(data);
-    if (data) {
-      setQr({
-        result: data,
-      });
-    }
-  };
-
-  const cameraQR = () => {
-    return (
-      <div>
-        <QrReader
-          delay={300}
-          onError={handleError}
-          onScan={handleScan}
-          style={{ width: "30%" }}
-        />
-      </div>
-    );
-  };
-
+function FormPayment() {
   return (
     <div>
       <div className="container">
@@ -89,12 +64,6 @@ function FormPayment(props) {
                               </button>
                             </div>
                           </form>
-                          <div>
-                            <button onClick={() => setCamera(!camera)}>
-                              Leer QR
-                            </button>
-                            {!camera ? <div></div> : cameraQR()}
-                          </div>
                         </div>
                       </div>
                     </div>

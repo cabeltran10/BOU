@@ -67,13 +67,15 @@ function ShoppingCart(props) {
 
   return (
     <div>
-      <div className="container add">
-      <div className="text justify-content-center">
+      <div className="container add col-md-12">
+      <div className="text justify-content-center col-md-12">
       <h1>Resumen de productos</h1>
-</div>
+      </div>
+
       <div className="card product-list">
         {props.car.products.map((item) => (
-          <div key={item.id} className="product-list-item">
+          <div className="col-md-12">
+          <div key={item.id} className="product-list-item col-md-12">
             <div className="item-image">
               <img
                 src={item.imageURL}
@@ -108,19 +110,27 @@ function ShoppingCart(props) {
             </div>
             <p>${item.price}</p>
           </div>
+          </div>
         ))}
       </div>
 
-      <div className="total row">
+
+      <div className="total row justify-content-center">
         <h2>Total</h2>
+        <div>
         <p>${total}</p>
+        </div>
       </div>
-      <div>
+      <div className="row justify-content-center">
+
         {props.car.shop ? (
-          <Link to={`/${props.car.shop}`}>Comprar Más!</Link>
+          <Link to={`/${props.car.shop}`}> <button className="shop-goto justify-content-center">Volver</button></Link>
         ) : (
           "No hay tienda"
         )}
+      </div>
+      <div className="row justify-content-center">
+      <button className="shop-go justify-content-center">Pagar</button>
       </div>
     </div>
     </div>

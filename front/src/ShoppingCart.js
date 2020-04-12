@@ -58,11 +58,17 @@ function ShoppingCart(props) {
     }
   };
 
-  let onClickremove = (item) => {
+  let onClickRemove = (item) => {
     setTotal(total - item.price * item.quantity);
-
-    props.setCar(item.quantity + 1);
-    props.onDelete(item.id);
+    let newCar = props.car;
+    let products = newCar.products;
+    for (let i = 0; i < products.length; i++) {
+      if (item.id === products[i].id) {
+        newCar.products.splice(i, 1);
+        break;
+      }
+    }
+    props.editCar(newCar);
   };
 
   return (
@@ -102,7 +108,7 @@ function ShoppingCart(props) {
                 -
               </button>
               <button
-                onClick={() => onClickremove(item)}
+                onClick={() => onClickRemove(item)}
                 className="item-remove"
               >
                 Remove
@@ -128,13 +134,13 @@ function ShoppingCart(props) {
         ) : (
           "No hay tienda"
         )}
+
       </div>
       <div className="row justify-content-center">
       <button className="shop-go justify-content-center">Pagar</button>
       </div>
     </div>
     </div>
-
   );
 }
 

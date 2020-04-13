@@ -62,8 +62,8 @@ Server runs on http://localhost:3000
 
 <h2>IMPORTANT!</h2>
 
-In order to run locally you must create a .env file containing any environment variables;  DB_USERNAME= <database_Username>,
-DB_PASSWORD=<databas_password>, DB_NAME=<naemOfYourDatabase> , SECRET=<secretSessionKey>. This is going to be required by the dotenv module.
+In order to run locally you must create a .env file containing any environment variables;  DB_NAME= <database_name>,
+ DB_URL=<URLOfYourDatabase> , SECRET=<secretSessionKey>. This is going to be required by the dotenv module.
 
 <br>
 <h2> Link </h2>

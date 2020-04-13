@@ -3,10 +3,6 @@ BOU is a web application that helps you pay faster in a clothes shop!
 
 <img width="1440" alt="Captura de Pantalla 2020-04-12 a la(s) 5 43 22 p  m" src="https://user-images.githubusercontent.com/26877363/79131123-b03e4680-7d6d-11ea-9bd7-a268cb583ac4.png">
 
-<h2>Demo</h2>
-
-<a>https://youtu.be/ZzcRwIRHeXA</a>
-
 
 <h2> Technologies </h2>
 <ul>

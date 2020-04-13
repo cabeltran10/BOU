@@ -16,7 +16,7 @@ function App(props) {
   const [user, setUser] = useState({});
   const [shops, setShops] = useState([]);
   useEffect(() => {
-    fetch("/getUser")
+    fetch("/getUser", {credentials: 'include'})
       .then((res) => res.json())
       .then((user) => setUser(user));
     console.log("this is the user", user);

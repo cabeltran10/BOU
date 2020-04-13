@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 ListStore.propTypes = {
-  shops: PropTypes.object.isRequired,
+  shops: PropTypes.array.isRequired,
   setShops: PropTypes.func.isRequired
 };
 function ListStore(props) {

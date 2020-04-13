@@ -13,6 +13,10 @@ Navbar.propTypes = {
 };
 
 function Navbar(props) {
+  const onClickLogout = () => {
+    props.setUser({});
+    fetch("/logout");
+  };
   console.log(props.user);
   return (
     <div>
@@ -46,7 +50,7 @@ function Navbar(props) {
             aria-labelledby="navbarDropdownMenuLink"
           >
             <Link className="dropdown-item" to="/">
-              <button onClick={() => props.setUser({})}>
+              <button onClick={onClickLogout}>
                 <img src={logout} alt="logout" width="20" height="20" />
               </button>
             </Link>

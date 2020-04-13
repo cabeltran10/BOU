@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 
 Navbar.propTypes = {
   user: PropTypes.object.isRequired,
-  setUser: PropTypes.func.isRequired
+  setUser: PropTypes.func.isRequired,
 };
 
 function Navbar(props) {
@@ -17,18 +17,16 @@ function Navbar(props) {
   return (
     <div>
       <nav>
-        <Link
-          to="/"
-          className="navbar-brand"
-          href="/"
-        ><img src={logo} /></Link>
+        <Link to="/" className="navbar-brand" href="/">
+          <img src={logo} />
+        </Link>
         <div className="navbar-nav ml-auto">
           <Link className="cartimg" to="/payment">
             <img alt="Go to pay" src={cart} width="30" height="30" />
           </Link>
           {!props.user.username ? (
             <Link className="cartimg" to="/login">
-              <img src={user} alt="login" width="25" height="25"/>
+              <img src={user} alt="login" width="25" height="25" />
             </Link>
           ) : (
             <label
@@ -47,8 +45,10 @@ function Navbar(props) {
             className="dropdown-menu"
             aria-labelledby="navbarDropdownMenuLink"
           >
-            <Link className="dropdown-item" to="/logout">
-              <img src={logout} alt="logout" width="20" height="20" />
+            <Link className="dropdown-item" to="/">
+              <button onClick={() => props.setUser({})}>
+                <img src={logout} alt="logout" width="20" height="20" />
+              </button>
             </Link>
           </div>
         </div>
